@@ -14,7 +14,7 @@ rawtx=$(./particl-cli getrawtransaction $txid) && decoderaw=$(./particl-cli deco
 #Display tx info
 echo $decoderaw
 
-#nbmaxtxinthistx need to be divided by 4 because 2outputs per MADecrow and 2tx per purchase + verify blind
-nbmadtxintheblock=$(echo "rawtx" | wc -l) 
+#nbmadtxinthistx need to be divided by 4 because 2outputs per MADecrow and 2tx per purchase + verify blind
+nbmadtxinthistx=$(echo "rawtx" | wc -l) 
 
 nbmadtot=$(nbmadtxinthistx + nbmadtot)
