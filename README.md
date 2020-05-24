@@ -8,4 +8,4 @@
 
 ## Check the MADescrows in a specific block
 
- `howmuchmadescrowinthisblock.sh`
+ `bash howmuchmadescrowinthisblock.sh`
