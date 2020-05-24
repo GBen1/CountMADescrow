@@ -51,5 +51,5 @@ rawtx=$(./particl-cli getrawtransaction $txid)
 currenttx=$(($currenttx + 1))
 done
 
- cat ../CountMADescrow/lastblocksearch.txt | grep -A 10 blind | cut -c12- | grep -E ^R | sed -n '1~2p' -wc -l
+ cat ../CountMADescrow/lastblocksearch.txt | grep -A 10 blind | cut -c12- | grep -E ^R | sed -n '1~2p' | wc -l
  cat ../CountMADescrow/lastblocksearch.txt | grep -A 10 blind | cut -c12- | grep -E ^R | sed -n '1~2p'
