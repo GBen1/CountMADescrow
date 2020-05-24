@@ -13,6 +13,7 @@
 ## MARKETPLACE
 
 - [PRESENTATION](https://particl.io/marketplace/)
+- [BUYFLOW (PDF)](https://github.com/GBen1/Docs/blob/master/CRYPTONOMY%20FINAL.pdf)
 - [TUTORIAL (ENG)](https://medium.com/@PART_BEN/11839ea30e09)
 - [TUTORIEL (FR)](https://medium.com/@PART_BEN/tutoriel-comment-utiliser-la-marketplace-anonyme-et-sans-interm%C3%A9diaires-de-particl-d6a2cbc070e2)
 - [LISTING EXPLORER (WEB)](https://www.demarkets.io/particl/explorer)
