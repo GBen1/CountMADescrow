@@ -56,6 +56,8 @@ currenttx=$(($currenttx + 1))
 done
 
 echo "$madblock MADESCROW CREATED IN THE BLOCK $currentblock"
+echo "$madtot MADESCROW CREATED FROM THE BEGINNING"
+echo ""
 
 madblock=0
 
@@ -65,4 +67,4 @@ currentblock=$(($currentblock + 1))
 done
 
 
-echo "$numadtot"
+echo "$madtot"
