@@ -100,7 +100,7 @@ clear
 cd
 cd particlcore
 
-checksynced$(./particl-cli getblockcount)
+checksynced=$(./particl-cli getblockcount)
 if [[ "$checksynced" -lt 698663 ]] ; then
 echo -e "${flred}ERROR: THE BLOCKCHAIN IS NOT FULLY SYNCHRONIZED ${neutre}" 
 exit
