@@ -8,6 +8,115 @@ red='\e[1;31m'
 bl='\e[1;36m'
 flred='\e[1;41m'
 
+cd
+
+clear
+
+echo "_________________________________________________________"
+echo ""
+echo ":: Updating repos, packages and installing dependencies.."
+echo ""
+
+#apt-get install sudo -y
+#sudo apt update -y && sudo apt -y upgrade
+#sudo apt install -y netcat-openbsd python git unzip pv jq dnsutils bc python-pip python-qrcode
+#sudo pip install qrcode[pil]
+
+apt install bc <<< y
+
+apt-get install sudo -y
+
+sudo apt-get -y install netcat-openbsd <<< y
+
+sudo apt-get update && sudo apt-get upgrade <<< y
+
+sudo apt-get install python git unzip pv jq <<< y
+
+sudo apt-get install python git unzip pv jq dnsutils <<< y
+
+sudo apt install bc <<< y
+
+sudo apt install python-pip <<< y
+
+sudo pip install qrcode[pil] <<< y
+
+sudo apt install python-qrcode <<< y
+
+sudo apt install python3-qrcode <<< y
+
+
+clear
+
+echo "_________________________________________________________"
+echo ""
+echo ":: Installing Partyman staking utility.."
+echo ""
+
+cd ~ && git clone https://github.com/dasource/partyman
+
+cd && cd partyman
+
+yes | ./partyman install
+
+clear
+
+yes | ./partyman restart now
+
+checkpartyman=$(./partyman status | grep YES | wc -c)
+
+if [[ "$checkpartyman" -lt 1 ]] ; then
+cd
+cd particlcore
+./particl-cli stop
+echo -e "${flred}ERROR: PARTYMAN INSTALL/RESTART FAILED${neutre}" >> errorscriptcs.txt
+date >> errorscriptcs.txt
+echo ""  >> errorscriptcs.txt
+echo " - Close any other partyman session on this vps/rpi and try again" >> errorscriptcs.txt
+echo "" >> errorscriptcs.txt
+echo " - Verify that ./particld is up and running and that partyman is working correctly" >> errorscriptcs.txt
+echo "" >> errorscriptcs.txt
+echo " - If you are not on Unbuntu or Debian thanks to install manually the following dependencies: netcat-openbsd python git unzip pv jq dnsutils bc python-pip python-qrcode" >> errorscriptcs.txt
+echo "" >> errorscriptcs.txt
+echo " - We are maybe working on this repository currently, thanks to try again latter" >> errorscriptcs.txt
+echo "" >> errorscriptcs.txt
+echo "" >> errorscriptcs.txt
+echo -e "${flred}Help channel:${neutre}" >> errorscriptcs.txt
+echo "" >> errorscriptcs.txt
+echo -e "https://t.me/particlhelp" >> errorscriptcs.txt
+echo -e "https://discord.gg/RrkZmC4" >> errorscriptcs.txt
+echo "" >> errorscriptcs.txt
+cd
+cd Private-Coldstaking
+bash log.sh
+exit
+fi
+
+
+while [ "$checkinit" != "35" ]
+do
+clear
+./partyman stakingnode init
+cd && cd particlcore 
+rewardaddress=$(./particl-cli getnewaddress) 
+checkinit=$(echo "$rewardaddress" | wc -c)  
+cd && cd partyman
+done
+
+cd && cd partyman
+
+echo "_________________________________________________________"
+echo ""
+echo ":: Updating Partyman to latest version.."
+echo ""
+
+git pull
+
+clear
+
+yes | ./partyman update
+
+clear
+
 
 cd
 cd particlcore
