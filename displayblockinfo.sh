@@ -39,10 +39,9 @@ txid=$(./particl-cli getblock $blockhash | cut -c5- | grep "^\"" | sed 's/"//' |
 
 
 
-rawtx=$(./particl-cli getrawtransaction $txid) && decoderaw=$(./particl-cli decoderawtransaction $rawtx) 
-#Display tx info
-echo $decoderaw
+rawtx=$(./particl-cli getrawtransaction $txid)
 
+./particl-cli decoderawtransaction $rawtx:wq
 
 
 
