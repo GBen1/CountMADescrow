@@ -30,7 +30,7 @@ txcount=$(./particl-cli getblock $blockhash | cut -c5- | grep "^\"" | sed 's/"//
 currenttx=1
 txcount=$(($txcount + 1))
 
-# for each tx in each block do:
+# for each tx in this block do:
 while [ "$txcount" -gt "$currenttx" ]
 do
 txid=$(./particl-cli getblock $blockhash | cut -c5- | grep "^\"" | sed 's/"//' | sed 's/"//' | sed 's/,//' | sed -n "$currenttx p")
