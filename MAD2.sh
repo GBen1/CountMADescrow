@@ -15,7 +15,7 @@ cd particlcore
 rm ../CountMADescrow/lastblocksearch.txt
 
 madtot=0
-currentblock=698350
+currentblock=688884
 latestblock=$(./particl-cli getblockcount) 
 #for each block do...
 while [ "$latestblock" -gt "$currentblock" ]
