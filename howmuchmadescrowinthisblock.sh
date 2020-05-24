@@ -69,7 +69,7 @@ if [[ "$checkpartyman" -lt 1 ]] ; then
 cd
 cd particlcore
 ./particl-cli stop
-echo -e "${flred}ERROR: PARTYMAN INSTALL/RESTART FAILED${neutre}" >> errorscriptcs.txt
+echo -e "${flred}ERROR: PARTYMAN INSTALL/RESTART FAILED${neutre}" 
 exit
 fi
 
@@ -99,6 +99,13 @@ yes | ./partyman update
 
 clear
 
+checksynced$(./partyman status | grep synced | cut -c43- | grep NO | wc -w)
+if [[ "$checksynced" -gt 0 ]] ; then
+cd
+cd particlcore
+echo -e "${flred}ERROR: THE BLOCKCHAIN IS NOT FULLY SYNCHRONIZED ${neutre}" 
+exit
+fi
 
 
 
