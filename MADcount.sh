@@ -23,6 +23,7 @@ clear
 echo -e "${red}The first MADescrow has been created during the block 444735 and we are at the block $latestblock ${neutre}"
 echo -e "${yel}From which block do you want to count the MADescrow creations ?${neutre}" && read currentblock
 currentblock=$(echo $currentblock | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA-Z]| sed -n '/^[[:digit:]]*$/p' )
+beginning=$(echo $currentblock | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA-Z]| sed -n '/^[[:digit:]]*$/p' )
 done
 
 madtot=0
@@ -66,8 +67,8 @@ madblock=$(printf '%.3f\n' "$(echo "$madblock" "+" "$numad" | bc -l )")
 madblock=$(echo "$madblock" | cut -d "." -f 1 | cut -d "," -f 1)
 
 
-echo "$madblock MADESCROW CREATED IN THE BLOCK $currentblock"
-echo "$madtot MADESCROW CREATED FROM THE BEGINNING"
+echo "${yel}$madblock${neutre} ${gr}MADESCROW CREATED IN THE BLOCK $currentblock${neutre}"
+echo "${yel}$madtot${neutre} ${gr}MADESCROW CREATED SINCE THE BLOCK $beginning${neutre}"
 echo ""
 
 madblock=0
