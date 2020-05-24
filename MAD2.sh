@@ -41,6 +41,11 @@ rawtx=$(./particl-cli getrawtransaction $txid)
 
 ./particl-cli decoderawtransaction $rawtx >> ../CountMADescrow/lastblocksearch.txt
 
+
+currenttx=$(($currenttx + 1))
+
+done
+
 numad=$(cat ../CountMADescrow/lastblocksearch.txt | grep -A 10 blind | cut -c12- | grep -E ^R | sed -n '1~2p' | sed 's/"//' | wc -l)
 
 
@@ -51,9 +56,6 @@ madtot=$(echo "$madtot" | cut -d "." -f 1 | cut -d "," -f 1)
 madblock=$(printf '%.3f\n' "$(echo "$madblock" "+" "$numad" | bc -l )")
 madblock=$(echo "$madblock" | cut -d "." -f 1 | cut -d "," -f 1)
 
-currenttx=$(($currenttx + 1))
-
-done
 
 echo "$madblock MADESCROW CREATED IN THE BLOCK $currentblock"
 echo "$madtot MADESCROW CREATED FROM THE BEGINNING"
@@ -66,5 +68,3 @@ rm ../CountMADescrow/lastblocksearch.txt
 currentblock=$(($currentblock + 1)) 
 done
 
-
-echo "$madtot"
