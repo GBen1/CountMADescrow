@@ -2,7 +2,9 @@
 
 **Mutual Assured Destruction ESCROW Counter for the Particl Marketplace:**
 
-## Start the counter from block X to the latest one (X > 50648)
+![Screenshot](madcounter.png)
+
+## Start the counter from block X to the latest one (X >= 50648)
 
 `bash MADcount.sh`
 
