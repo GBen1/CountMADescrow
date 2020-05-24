@@ -50,6 +50,11 @@ rawtx=$(./particl-cli getrawtransaction $txid)
 
 currenttx=$(($currenttx + 1))
 done
-
- cat ../CountMADescrow/lastblocksearch.txt | grep -A 10 blind | cut -c12- | grep -E ^R | sed -n '1~2p' | wc -l
- cat ../CountMADescrow/lastblocksearch.txt | grep -A 10 blind | cut -c12- | grep -E ^R | sed -n '1~2p'
+clear
+ numad=$(cat ../CountMADescrow/lastblocksearch.txt | grep -A 10 blind | cut -c12- | grep -E ^R | sed -n '1~2p' | wc -l)
+ madlist=$(cat ../CountMADescrow/lastblocksearch.txt | grep -A 10 blind | cut -c12- | grep -E ^R | sed -n '1~2p')
+ 
+echo -e "${yel}$numad MADESCROWS CREATED IN THE BLOCK $blockdisplay:${neutre}"
+echo ""
+echo -e "${yel}$madlist:${neutre}"
+rm ../CountMADescrow/lastblocksearch.txt
