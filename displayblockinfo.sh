@@ -56,6 +56,6 @@ clear
  
 echo -e "${yel}$numad MADESCROWS CREATED IN THE BLOCK $blockdisplay: ${neutre}"
 echo ""
-echo -e "${yel}$madlist${neutre}"
+echo -e "${gr}$madlist${neutre}"
 echo ""
 rm ../CountMADescrow/lastblocksearch.txt
