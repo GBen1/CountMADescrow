@@ -69,25 +69,6 @@ cd
 cd particlcore
 ./particl-cli stop
 echo -e "${flred}ERROR: PARTYMAN INSTALL/RESTART FAILED${neutre}" >> errorscriptcs.txt
-date >> errorscriptcs.txt
-echo ""  >> errorscriptcs.txt
-echo " - Close any other partyman session on this vps/rpi and try again" >> errorscriptcs.txt
-echo "" >> errorscriptcs.txt
-echo " - Verify that ./particld is up and running and that partyman is working correctly" >> errorscriptcs.txt
-echo "" >> errorscriptcs.txt
-echo " - If you are not on Unbuntu or Debian thanks to install manually the following dependencies: netcat-openbsd python git unzip pv jq dnsutils bc python-pip python-qrcode" >> errorscriptcs.txt
-echo "" >> errorscriptcs.txt
-echo " - We are maybe working on this repository currently, thanks to try again latter" >> errorscriptcs.txt
-echo "" >> errorscriptcs.txt
-echo "" >> errorscriptcs.txt
-echo -e "${flred}Help channel:${neutre}" >> errorscriptcs.txt
-echo "" >> errorscriptcs.txt
-echo -e "https://t.me/particlhelp" >> errorscriptcs.txt
-echo -e "https://discord.gg/RrkZmC4" >> errorscriptcs.txt
-echo "" >> errorscriptcs.txt
-cd
-cd Private-Coldstaking
-bash log.sh
 exit
 fi
 
