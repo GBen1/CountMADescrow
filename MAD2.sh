@@ -48,11 +48,16 @@ numad=$(cat ../CountMADescrow/lastblocksearch.txt | grep -A 10 blind | cut -c12-
 madtot=$(printf '%.3f\n' "$(echo "$madtot" "+" "$numad" | bc -l )")
 madtot=$(echo "$madtot" | cut -d "." -f 1 | cut -d "," -f 1)
 
+madblock=$(printf '%.3f\n' "$(echo "$madblock" "+" "$numad" | bc -l )")
+madblock=$(echo "$madblock" | cut -d "." -f 1 | cut -d "," -f 1)
 
 currenttx=$(($currenttx + 1))
 
 done
 
+echo "$madblock MADESCROW CREATED IN THE BLOCK $currentblock"
+
+madblock=0
 
 rm ../CountMADescrow/lastblocksearch.txt
 
