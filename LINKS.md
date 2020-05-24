@@ -50,6 +50,13 @@
 - [Crymel's Pool](https://particl.crymel.icu)
 - [Tecnovert's Pool ](http://66.172.10.231:903)
 
+## AUDITS
+
+- [QUARKSLAB](https://link.medium.com/QRuBTImY4X)
+- [QUARKSLAB (DETAILED)](https://blog.quarkslab.com/resources/2019-07-05-audit-particl-bulletproof-mlsag/particl_audit_report.pdf)
+- [NJIT](https://twitter.com/particlproject/status/979780450586685441?s=21 (https://twitter.com/particlproject/status/979780450586685441?s=21))
+- [WSA](https://twitter.com/particlproject/status/1022816391647387648?s=21 (https://twitter.com/particlproject/status/1022816391647387648?s=21))
+
 ## SOCIAL MEDIAS
 
 - [YOUTUBE](https://www.youtube.com/channel/UCnuttPuAY6AOenTz2GGMnbg)
