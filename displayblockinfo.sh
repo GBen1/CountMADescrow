@@ -59,10 +59,6 @@ echo "" >> ../CountMADescrow/madlist.txt
 madlist=$(./particl-cli decoderawtransaction $rawtx | grep -A 10 blind | cut -c12- | grep -E ^R | sed -n '1~2p') >> ../CountMADescrow/madlist.txt
 
 
-| cut -c12- | grep -E ^R | sed 's/"//' | sed -n '1~2p'
-
-
-
 currenttx=$(($currenttx + 1))
 done
 
