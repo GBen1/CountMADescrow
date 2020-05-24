@@ -9,8 +9,8 @@ bl='\e[1;36m'
 flred='\e[1;41m'
 
 
-$numadtot=0
-$blockdisplay=0
+numadtot=0
+blockdisplay=0
 while ((blockdisplay < 1))
 do
 clear
@@ -33,7 +33,7 @@ txcount=$(./particl-cli getblock $blockhash | cut -c5- | grep "^\"" | sed 's/"//
 currenttx=1
 txcount=$(($txcount + 1))
 
-$numad=0
+numad=0
 
 
 # for each tx in this block do:
