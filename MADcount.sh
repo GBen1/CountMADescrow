@@ -20,8 +20,9 @@ currentblock=0
 while ((currentblock < 1))
 do
 clear
-echo -e "${bl} The first MADescrow has been created during the block 444735 and we are at the block $latestblock ${neutre}"
-echo -e "${yel}From which block do you want to count the MADescrow creation ?:${neutre}" && read blockdisplay
+echo ""
+echo -e "${bl}The first MADescrow has been created during the block 444735 and we are at the block $latestblock ${neutre}"
+echo -e "${yel}From which block do you want to count the MADescrow creations ?${neutre}" && read blockdisplay
 blockdisplay=$(echo $blockdisplay | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA-Z]| sed -n '/^[[:digit:]]*$/p' )
 done
 
