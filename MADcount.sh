@@ -67,8 +67,8 @@ madblock=$(printf '%.3f\n' "$(echo "$madblock" "+" "$numad" | bc -l )")
 madblock=$(echo "$madblock" | cut -d "." -f 1 | cut -d "," -f 1)
 
 
-echo "${yel}$madblock${neutre} ${gr}MADESCROW CREATED IN THE BLOCK $currentblock${neutre}"
-echo "${yel}$madtot${neutre} ${gr}MADESCROW CREATED SINCE THE BLOCK $beginning${neutre}"
+echo -e "${yel}$madblock${neutre} ${gr}MADESCROW CREATED IN THE BLOCK $currentblock${neutre}"
+echo -e "${yel}$madtot${neutre} ${gr}MADESCROW CREATED SINCE THE BLOCK $beginning${neutre}"
 echo ""
 
 madblock=0
