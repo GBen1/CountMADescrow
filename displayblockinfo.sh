@@ -54,7 +54,8 @@ clear
  numad=$(cat ../CountMADescrow/lastblocksearch.txt | grep -A 10 blind | cut -c12- | grep -E ^R | sed -n '1~2p' | wc -l)
  madlist=$(cat ../CountMADescrow/lastblocksearch.txt | grep -A 10 blind | cut -c12- | grep -E ^R | sed -n '1~2p')
  
-echo -e "${yel}$numad MADESCROWS CREATED IN THE BLOCK $blockdisplay:${neutre}"
+echo -e "${yel}$numad MADESCROWS CREATED IN THE BLOCK $blockdisplay: ${neutre}"
 echo ""
-echo -e "${yel}$madlist:${neutre}"
+echo -e "${yel}$madlist${neutre}"
+echo ""
 rm ../CountMADescrow/lastblocksearch.txt
