@@ -8,6 +8,8 @@ red='\e[1;31m'
 bl='\e[1;36m'
 flred='\e[1;41m'
 
+
+
 $blockdisplay=0
 while ((blockdisplay < 1))
 do
@@ -19,7 +21,7 @@ done
 cd
 cd particlcore
 
-
+rm ../CountMADescrow/lastblocksearch.txt
 
 
 blockhash=$(./particl-cli getblockstats $blockdisplay | grep blockhash | sed 's/.* //' | sed 's/"//' | sed 's/"//' | sed 's/,//')
@@ -41,7 +43,7 @@ txid=$(./particl-cli getblock $blockhash | cut -c5- | grep "^\"" | sed 's/"//' |
 
 rawtx=$(./particl-cli getrawtransaction $txid)
 
-./particl-cli decoderawtransaction $rawtx > ../CountMADescrow/lastblocksearch.txt
+./particl-cli decoderawtransaction $rawtx >> ../CountMADescrow/lastblocksearch.txt
 ./particl-cli decoderawtransaction $rawtx
 
 
