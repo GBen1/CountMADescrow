@@ -10,7 +10,7 @@ flred='\e[1;41m'
 
 
 
-$blockdisplay=0
+blockdisplay=0
 while ((blockdisplay < 1))
 do
 clear
