@@ -107,10 +107,10 @@ rm ../CountMADescrow/lastblocksearch.txt
 latestblock=$(./particl-cli getblockcount) 
 
 currentblock=0
-while ((currentblock < 1))
+while ((currentblock < 506468))
 do
 clear
-echo -e "${red}The first MADescrow has been created during the block 444735 but it wasn' t private and we are at the block $latestblock ${neutre}"
+echo -e "${red}The first Private MADescrow has been created during the block 506469 we are at the block $latestblock ${neutre}"
 echo -e "${yel}From which block do you want to count the Private MADescrow creations ?${neutre}" && read currentblock
 currentblock=$(echo $currentblock | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA-Z]| sed -n '/^[[:digit:]]*$/p' )
 beginning=$(echo $currentblock | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA-Z]| sed -n '/^[[:digit:]]*$/p' )
