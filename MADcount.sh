@@ -97,18 +97,14 @@ clear
 yes | ./partyman update
 
 clear
-
-checksynced$(./partyman status | grep synced | cut -c43- | grep NO | wc -w)
-if [[ "$checksynced" -gt 0 ]] ; then
 cd
 cd particlcore
+
+checksynced$(./particl-cli getblockcount)
+if [[ "$checksynced" -lt 698663 ]] ; then
 echo -e "${flred}ERROR: THE BLOCKCHAIN IS NOT FULLY SYNCHRONIZED ${neutre}" 
 exit
 fi
-
-
-cd
-cd particlcore
 
 rm ../CountMADescrow/lastblocksearch.txt
 
