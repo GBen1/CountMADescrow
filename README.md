@@ -1,6 +1,6 @@
 # CountMADescrow
 
-**Mutual Assured Destruction ESCROW Counter for the Particl Marketplace:**
+**Private Mutual Assured Destruction ESCROW Counter for the Particl Marketplace:**
 
 ![Screenshot](madcounter.png)
 
