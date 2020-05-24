@@ -4,7 +4,7 @@
 
 ![Screenshot](madcounter.png)
 
-## Start the counter from block X to the latest one (X >= 50648)
+## Start the counter from block X to the latest one (X >= 506468)
 
 `bash MADcount.sh`
 
