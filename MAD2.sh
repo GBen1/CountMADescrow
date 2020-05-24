@@ -14,14 +14,13 @@ cd particlcore
 
 rm ../CountMADescrow/lastblocksearch.txt
 
+madtot=0
 currentblock=698350
 latestblock=$(./particl-cli getblockcount) 
 #for each block do...
 while [ "$latestblock" -gt "$currentblock" ]
 do 
 
-
-------
 
 
 blockhash=$(./particl-cli getblockstats $currentblock | grep blockhash | sed 's/.* //' | sed 's/"//' | sed 's/"//' | sed 's/,//')
@@ -34,7 +33,7 @@ txcount=$(($txcount + 1))
 while [ "$txcount" -gt "$currenttx" ]
 do
 
----
+
 
 txid=$(./particl-cli getblock $blockhash | cut -c5- | grep "^\"" | sed 's/"//' | sed 's/"//' | sed 's/,//' | sed -n "$currenttx p")
 
@@ -43,18 +42,22 @@ rawtx=$(./particl-cli getrawtransaction $txid)
 ./particl-cli decoderawtransaction $rawtx >> ../CountMADescrow/lastblocksearch.txt
 
 numad=$(cat ../CountMADescrow/lastblocksearch.txt | grep -A 10 blind | cut -c12- | grep -E ^R | sed -n '1~2p' | sed 's/"//' | wc -l)
-madtot=
 
+
+
+madtot=$(printf '%.3f\n' "$(echo "$madtot" "+" "$numad" | bc -l )")
+madtot=$(echo "$madtot" | cut -d "." -f 1 | cut -d "," -f 1)
 
 
 currenttx=$(($currenttx + 1))
 
----
 done
 
 
 rm ../CountMADescrow/lastblocksearch.txt
------
 
 currentblock=$(($currentblock + 1)) 
 done
+
+
+echo "$numadtot"
