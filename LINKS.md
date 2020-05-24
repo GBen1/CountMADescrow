@@ -13,6 +13,9 @@
 ## MARKETPLACE
 
 - [PRESENTATION](https://particl.io/marketplace/)
+- [MUTUAL ASSURED DESTRUCTION ESCROW](https://particl.news/particl-explained-double-deposit-mad-escrow-b3699dd29768)
+- [STOREFRONTS](https://particl.news/market-management-is-next-3e35356d5de0)
+- [DECENTRALIZED GOVERNANCE](https://particl.news/particl-explained-double-deposit-mad-escrow-b3699dd29768)
 - [BUYFLOW (PDF)](https://github.com/GBen1/Docs/blob/master/CRYPTONOMY%20FINAL.pdf)
 - [TUTORIAL (ENG)](https://medium.com/@PART_BEN/11839ea30e09)
 - [TUTORIEL (FR)](https://medium.com/@PART_BEN/tutoriel-comment-utiliser-la-marketplace-anonyme-et-sans-interm%C3%A9diaires-de-particl-d6a2cbc070e2)
