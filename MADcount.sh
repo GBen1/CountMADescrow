@@ -100,6 +100,9 @@ clear
 cd
 cd particlcore
 
+# The blockchain has to be fully synchronized to count the madescrows from the block $currentblock to the lattest one, 
+# if someone launch the script when the script is synchronized between 698663 and the latest block (not included) it won' t work.
+# to prevent this potential issue I will need to replace 698663 by the latest block found on a block explorer.
 checksynced=$(./particl-cli getblockcount)
 if [[ "$checksynced" -lt 698663 ]] ; then
 echo -e "${flred}ERROR: THE BLOCKCHAIN IS NOT FULLY SYNCHRONIZED ${neutre}" 
@@ -107,30 +110,35 @@ echo -e "${flred}TRY AGAIN IN FEW MINUTES ${neutre}"
 exit
 fi
 
+#delete this file to not keep the informations of the latest block scanned if this script has already been used
 rm ../CountMADescrow/lastblocksearch.txt
 
+#what is the highest block synchronized on this node ?
 latestblock=$(./particl-cli getblockcount) 
 
 currentblock=0
 while ((currentblock < 506468))
 do
 clear
+#It s not useful t start counting before the block 506468 for the reason explained below
 echo -e "${red}The first Private MADescrow has been created during the block 506469 we are at the block $latestblock ${neutre}"
 echo -e "${yel}From which block do you want to count the Private MADescrow creations ?${neutre}" && read currentblock
 currentblock=$(echo $currentblock | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA-Z]| sed -n '/^[[:digit:]]*$/p' )
 beginning=$(echo $currentblock | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA-Z]| sed -n '/^[[:digit:]]*$/p' )
 done
 
+#initialize the counter
 madtot=0
 #for each block do...
 while [ "$latestblock" -gt "$currentblock" ]
 do 
 
-
-
+#select the blockhash of this block
 blockhash=$(./particl-cli getblockstats $currentblock | grep blockhash | sed 's/.* //' | sed 's/"//' | sed 's/"//' | sed 's/,//')
 
+#How much tx in this block ?
 txcount=$(./particl-cli getblock $blockhash | cut -c5- | grep "^\"" | sed 's/"//' | sed 's/"//' | sed 's/,//' | wc -l)
+
 currenttx=1
 txcount=$(($txcount + 1))
 
@@ -139,35 +147,47 @@ while [ "$txcount" -gt "$currenttx" ]
 do
 
 
-
+#select the current tx in the blockhash
 txid=$(./particl-cli getblock $blockhash | cut -c5- | grep "^\"" | sed 's/"//' | sed 's/"//' | sed 's/,//' | sed -n "$currenttx p")
 
+#get rawtransaction of the current tx
 rawtx=$(./particl-cli getrawtransaction $txid)
 
+#decode raw tx and print the current tx in a txt file (and add it to the other tx if it s not the first loop of this block)
 ./particl-cli decoderawtransaction $rawtx >> ../CountMADescrow/lastblocksearch.txt
 
 
 currenttx=$(($currenttx + 1))
-
 done
 
+#how much madescrow in this block (2 "Pblind" to the same "Rblind") ?
+# The line below is the most important one, for 1madescrow creation there are 2occurences ( sed -n '1~2p') 
+# of the same multisig address (grep -E ^R) beginning by R and during a blind tx (grep -A 10 blind), 
+# The number of lines of this command (wc -l) should therefore meet with the number of madescrows in this block
+# The current results of this script seem to be accurate but I will need to keep thinking about the different cases which could
+# make these results gameable to prevent a potential flaws.
 numad=$(cat ../CountMADescrow/lastblocksearch.txt | grep -A 10 blind | cut -c12- | grep -E ^R | sed -n '1~2p' | sed 's/"//' | wc -l)
 
-
-
+#increase the madescrow counter if there are madescrows in this block
 madtot=$(printf '%.3f\n' "$(echo "$madtot" "+" "$numad" | bc -l )")
 madtot=$(echo "$madtot" | cut -d "." -f 1 | cut -d "," -f 1)
 
+#Maybe I should delete the two lines below and replace $madblock by $numad in all the others occurences to be make the code more clean
+#In all cases it shouldn 't change anything to the results
 madblock=$(printf '%.3f\n' "$(echo "$madblock" "+" "$numad" | bc -l )")
 madblock=$(echo "$madblock" | cut -d "." -f 1 | cut -d "," -f 1)
 
 
 echo -e "${yel}$madblock${neutre} ${gr}PRIVATE MADESCROW CREATED IN THE BLOCK $currentblock${neutre}"
-echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROW CREATED SINCE THE BLOCK $beginning${neutre}"
+echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROWS CREATED SINCE THE BLOCK $beginning${neutre}"
 echo ""
 
+# reinitialize the madblock counter for the next block 
+# (maybe I should cut/past this line to the line 135 to initialize the counter and reinitialize it at the same time for the next block
+# it won t be useful but could prevent some error message to be displayed)
 madblock=0
 
+#delete the txt file to have a new one empty for the next block
 rm ../CountMADescrow/lastblocksearch.txt
 
 currentblock=$(($currentblock + 1)) 
