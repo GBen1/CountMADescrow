@@ -160,14 +160,16 @@ rawtx=$(./particl-cli getrawtransaction $txid)
 currenttx=$(($currenttx + 1))
 done
 
-#how much madescrow in this block (2 "Pblind" to the same "Rblind") ?
+# How much madescrow in this block (2 "Pblind" to the same "Rblind") ?
 # The line below is the most important one, for 1madescrow creation there are 2occurences ( sed -n '1~2p') 
-# of the same multisig address (grep -E ^R) beginning by R and during a blind tx (grep -A 10 blind), 
+# of the same multisig address (grep -E ^R) beginning by R and during a blind tx (grep -A 10 blind) because to addresses are sending
+# their parts to the same blind-multisig address
 # The number of lines of this command (wc -l) should therefore meet with the number of madescrows in this block
 # The current results of this script seem to be accurate but I will need to keep thinking about the different cases which could
-# make these results gameable to prevent a potential flaws.
-# Maybe I should verify that 2 multisig address in a blind tx are identical before considering a madescrow but making a blind tx 
-# outside the marketplace would require a stealth address which is going to send the funds to an address beginning by P and not by R.
+# make these results gameable to prevent a potential flaws:
+#
+# Maybe I should verify that 2 multisig addresses in a blind tx are identical before considering a madescrow but making a blind tx 
+# to a multisig address outside the marketplace would require a stealth address which is going to send the funds to an address beginning by R and not by P.
 # It has to be a stealth address which redirect the funds to a multisig address I don' know if someone knows how to do that except
 # the particl devs but this potential issue has to be taken into account int this grep...
 numad=$(cat ../CountMADescrow/lastblocksearch.txt | grep -A 10 blind | cut -c12- | grep -E ^R | sed -n '1~2p' | sed 's/"//' | wc -l)
