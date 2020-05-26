@@ -120,7 +120,7 @@ currentblock=0
 while ((currentblock < 1))
 do
 clear
-echo -e "${yel}Enter the block number in which you want to know how much madescrow there are:${neutre}" && read currentblock
+echo -e "${yel}Enter the block number in which one you want to know how much madescrows there are:${neutre}" && read currentblock
 blockdisplay=$(echo $blockdisplay | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA-Z]| sed -n '/^[[:digit:]]*$/p' )
 done
 
@@ -207,4 +207,5 @@ clear
 echo -e "${yel}$madblock MADESCROWS CREATED IN THE BLOCK $currentblock ${neutre}"
 echo ""
 echo -e "${gr}$madlist${neutre}"
+echo ""
 rm ../CountMADescrow/madlist.txt  2>/dev/null
