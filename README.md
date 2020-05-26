@@ -6,11 +6,11 @@
 
 ![Screenshot](mad-2.png)
 
-**MADcount.sh verify the following conditions to count a MADescrow: **
+**MADcount.sh verify the following conditions to count a MADescrow:**
 
 "If there are 2 blind transactions in the same block which deposit a Multisig address there is a MADescrow in this block"
 
-**MADcountV2.sh is a more accurate but it also takes more time, MADcountV2.sh verify the following conditions to count a MADescrow: ** 
+**MADcountV2.sh is a more accurate but it also takes more time, MADcountV2.sh verify the following conditions to count a MADescrow:** 
 
 "If there are 2blind transactions in the same txid which deposit the same Multisig address there is a MADescrow in this block"
 
