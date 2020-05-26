@@ -123,7 +123,7 @@ do
 clear
 #It s not useful t start counting before the block 506468 for the reason explained below
 echo -e "${red}The first Private MADescrow has been created during the block 506469 we are at the block $latestblock ${neutre}"
-echo -e "${yel}From which block do you want to count the Private MADescrow creations ?${neutre}" && read currentblock
+echo -e "${yel}From which block do you want to count the Private MADescrow creations ?${neutre}${gr}[506468;$latestblock]${neutre}" && read currentblock
 currentblock=$(echo $currentblock | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA-Z]| sed -n '/^[[:digit:]]*$/p' )
 beginning=$(echo $currentblock | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA-Z]| sed -n '/^[[:digit:]]*$/p' )
 done
@@ -164,7 +164,6 @@ done
 
 # If there are 2 blind tx which deposit an address beginning by R during the same block there is a Madescrow created in this block. 
 # Need to be improved but pretty accurate for the moment
-
 numad=$(cat ../CountMADescrow/lastblocksearch.txt | grep -A 10 blind | cut -c12- | grep -E ^R | sed -n '1~2p' | sed 's/"//' | wc -l)
 
 #increase the madescrow counter if there are madescrows in this block
@@ -175,8 +174,6 @@ madtot=$(echo "$madtot" | cut -d "." -f 1 | cut -d "," -f 1)
 echo -e "${yel}$numad${neutre} ${gr}PRIVATE MADESCROW CREATED IN THE BLOCK $currentblock${neutre}"
 echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROWS CREATED SINCE THE BLOCK $beginning${neutre}"
 echo ""
-
-
 
 #delete the txt file to have a new one empty for the next block
 rm ../CountMADescrow/lastblocksearch.txt  2>/dev/null
