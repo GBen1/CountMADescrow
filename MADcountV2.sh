@@ -101,7 +101,6 @@ cd
 cd particlcore
 
 # The blockchain has to be fully synchronized to count the madescrows from the block $currentblock to the lattest one, 
-# if someone launch the script when the script is synchronized between 698663 and the latest block (not included) it won' t work.
 curl_cmd="timeout 7 curl -4 -s -L -A i ../partyman/$PARTYMAN_VERSION"
 highestblock=$($curl_cmd https://explorer.particl.io/particl-insight-api/sync 2>/dev/null | jq -r .blockChainHeight)
 checksynced=$(./particl-cli getblockcount)
