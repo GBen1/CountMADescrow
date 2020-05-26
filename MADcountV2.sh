@@ -196,7 +196,7 @@ multisigcount=$(($multisigcount + 1))
 done
 
 
-#increase the madescrow counter if there are madescrows in this block
+#increase the madblock counter if there are madescrows in this block
 madblock=$(printf '%.3f\n' "$(echo "$madtxid" "+" "$madblock" | bc -l )")
 madblock=$(echo "$madblock" | cut -d "." -f 1 | cut -d "," -f 1)
 
