@@ -204,7 +204,7 @@ done
 clear
 
 [ -f ../CountMADescrow/madlist.txt ] && madlist=$(cat ../CountMADescrow/madlist.txt)  2>/dev/null
-echo -e "${yel}$madblock MADESCROWS CREATED IN THE BLOCK $currentblock ${neutre}"
+echo -e "${yel}$madblock MADESCROW(S) CREATED IN THE BLOCK $currentblock ${neutre}"
 echo ""
 echo -e "${gr}$madlist${neutre}"
 echo ""
