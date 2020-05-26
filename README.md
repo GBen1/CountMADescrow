@@ -6,7 +6,6 @@
 
 ![Screenshot](mad-2.png)
 
-***
 
 **MADcount.sh verify the following conditions to count a MADescrow:**
 
