@@ -133,7 +133,6 @@ madtot=0
 #for each block do...
 while [ "$latestblock" -gt "$currentblock" ]
 do 
-madblock=0
 
 #select the blockhash of this block
 blockhash=$(./particl-cli getblockstats $currentblock | grep blockhash | sed 's/.* //' | sed 's/"//' | sed 's/"//' | sed 's/,//')
@@ -164,20 +163,19 @@ done
 
 # If there are 2 blind tx which deposit an address beginning by R during the same block there is a Madescrow created in this block. 
 # Need to be improved but pretty accurate for the moment
-numad=$(cat ../CountMADescrow/lastblocksearch.txt | grep -A 10 blind | cut -c12- | grep -E ^R | sed -n '1~2p' | sed 's/"//' | wc -l)
+madblock=$(cat ../CountMADescrow/lastblocksearch.txt | grep -A 10 blind | cut -c12- | grep -E ^R | sed -n '1~2p' | sed 's/"//' | wc -l)
 
 #increase the madescrow counter if there are madescrows in this block
-madtot=$(printf '%.3f\n' "$(echo "$madtot" "+" "$numad" | bc -l )")
+madtot=$(printf '%.3f\n' "$(echo "$madtot" "+" "$madblock" | bc -l )")
 madtot=$(echo "$madtot" | cut -d "." -f 1 | cut -d "," -f 1)
 
 
-echo -e "${yel}$numad${neutre} ${gr}PRIVATE MADESCROW CREATED IN THE BLOCK $currentblock${neutre}"
+echo -e "${yel}$madblock${neutre} ${gr}PRIVATE MADESCROW CREATED IN THE BLOCK $currentblock${neutre}"
 echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROWS CREATED SINCE THE BLOCK $beginning${neutre}"
 echo ""
 
-#delete the txt file to have a new one empty for the next block
+#delete the txt file to have a new one empty for the next block and reinitialize "$madblock"
 rm ../CountMADescrow/lastblocksearch.txt  2>/dev/null
 
 currentblock=$(($currentblock + 1)) 
 done
-
