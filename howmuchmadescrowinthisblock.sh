@@ -8,7 +8,6 @@ red='\e[1;31m'
 bl='\e[1;36m'
 flred='\e[1;41m'
 
-
 cd
 
 clear
@@ -98,62 +97,114 @@ clear
 yes | ./partyman update
 
 clear
+cd
+cd particlcore
 
-cd && cd particlcore
+# The blockchain has to be fully synchronized to count the madescrows from the block $currentblock to the lattest one, 
+curl_cmd="timeout 7 curl -4 -s -L -A i ../partyman/$PARTYMAN_VERSION"
+highestblock=$($curl_cmd https://explorer.particl.io/particl-insight-api/sync 2>/dev/null | jq -r .blockChainHeight)
 checksynced=$(./particl-cli getblockcount)
-if [[ "$checksynced" -lt 698663 ]] ; then
+if [[ "$checksynced" -lt "$highestblock" ]] ; then
 echo -e "${flred}ERROR: THE BLOCKCHAIN IS NOT FULLY SYNCHRONIZED ${neutre}" 
 echo -e "${flred}TRY AGAIN IN FEW MINUTES ${neutre}"
 exit
 fi
 
+#delete this file to not keep the informations of the latest txid scanned if this script has already been used
+rm ../CountMADescrow/lasttxidsearch.txt 2>/dev/null
 
+#what is the highest block synchronized on this node ?
+latestblock=$(./particl-cli getblockcount) 
 
-blockdisplay=0
-while ((blockdisplay < 1))
+currentblock=0
+while ((currentblock < 1))
 do
 clear
-echo -e "${yel}Enter the number of the block you want to display:${neutre}" && read blockdisplay
+echo -e "${yel}Enter the block number in which you want to know how much madescrow there are:${neutre}" && read currentblock
 blockdisplay=$(echo $blockdisplay | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA-Z]| sed -n '/^[[:digit:]]*$/p' )
 done
 
-cd
-cd particlcore
 
-rm ../CountMADescrow/lastblocksearch.txt
+#reinititialize madblock
+madblock=0
 
+#select the blockhash of this block
+blockhash=$(./particl-cli getblockstats $currentblock | grep blockhash | sed 's/.* //' | sed 's/"//' | sed 's/"//' | sed 's/,//')
 
-blockhash=$(./particl-cli getblockstats $blockdisplay | grep blockhash | sed 's/.* //' | sed 's/"//' | sed 's/"//' | sed 's/,//')
-
-
-
+#How much txid in this block ?
 txcount=$(./particl-cli getblock $blockhash | cut -c5- | grep "^\"" | sed 's/"//' | sed 's/"//' | sed 's/,//' | wc -l)
+
 currenttx=1
 txcount=$(($txcount + 1))
 
-# for each tx in this block do:
+# for each txid in this block do:
 while [ "$txcount" -gt "$currenttx" ]
 do
+
+#reinitialize madtxid
+madtxid=0
+
+
+#select the current tx in the blockhash
 txid=$(./particl-cli getblock $blockhash | cut -c5- | grep "^\"" | sed 's/"//' | sed 's/"//' | sed 's/,//' | sed -n "$currenttx p")
 
-
-
-
-
+#get rawtransaction of the current tx
 rawtx=$(./particl-cli getrawtransaction $txid)
 
-./particl-cli decoderawtransaction $rawtx >> ../CountMADescrow/lastblocksearch.txt
+#decode raw tx and print the current tx in a txt file (and add it to the other tx if it s not the first loop of this block)
+./particl-cli decoderawtransaction $rawtx >> ../CountMADescrow/lasttxidsearch.txt 2>/dev/null
+
+#how much multisig address in this txid
+nbmultisig=$(cat ../CountMADescrow/lasttxidsearch.txt | grep -A 10 blind | cut -c12- | grep -E ^R | sed 's/"//' | wc -l)
 
 
+multisigcount=0
+#A raw tx decoded show exactly 2 occurences of the same multisig address when there is a madescrow so let s check all the multisig address of this txid to know if they are identical
+while [ "$multisigcount" -lt "$nbmultisig" ]
+do
+
+line1=$(printf '%.3f\n' "$(echo "$multisigcount" "+" "1" | bc -l )")
+line1=$(echo "$line1" | cut -d "." -f 1 | cut -d "," -f 1)
+
+line2=$(printf '%.3f\n' "$(echo "$multisigcount" "+" "2" | bc -l )")
+line2=$(echo "$line1" | cut -d "." -f 1 | cut -d "," -f 1)
+
+#a multisig address begin by R and a madescrow is made using Confidential transaction (blind)
+multisig1=$(cat ../CountMADescrow/lasttxidsearch.txt | grep -A 10 blind | cut -c12- | grep -E ^R | sed 's/"//' | sed -n "$line1 p")
+multisig2=$(cat ../CountMADescrow/lasttxidsearch.txt | grep -A 10 blind | cut -c12- | grep -E ^R | sed 's/"//' | sed -n "$line2 p")
+
+if [[ "$multisig1" = "$multisig2"  ]] ; then
+
+#increase madtxid counter if there are madescrows in this txid
+madtxid=$(printf '%.3f\n' "$(echo "$madtxid" "+" "1" | bc -l )")
+madtxid=$(echo "$madtxid" | cut -d "." -f 1 | cut -d "," -f 1)
+
+#it s an escrow involving 2transactions which are going to the same multisig address so if multisig1(buyer tx to the multisig1)=multisig2(seller tx to the multisig2) in this txid multisig2 != multisig3, this line should optimize the script
+multisigcount=$(($multisigcount + 1))
+
+echo "$multisig1" >> ../CountMADescrow/madlist.txt
+echo "" >> ../CountMADescrow/madlist.txt
+fi
+
+
+multisigcount=$(($multisigcount + 1))
+done
+
+
+#increase the madblock counter if there are madescrows in this block
+madblock=$(printf '%.3f\n' "$(echo "$madtxid" "+" "$madblock" | bc -l )")
+madblock=$(echo "$madblock" | cut -d "." -f 1 | cut -d "," -f 1)
+
+
+#delete the txt file to have a new one empty for the next block and reinitialize "$madtxid"
+rm ../CountMADescrow/lasttxidsearch.txt  2>/dev/null
 
 currenttx=$(($currenttx + 1))
 done
 clear
- numad=$(cat ../CountMADescrow/lastblocksearch.txt | grep -A 10 blind | cut -c12- | grep -E ^R | sed -n '1~2p' | sed 's/"//' | wc -l)
- madlist=$(cat ../CountMADescrow/lastblocksearch.txt | grep -A 10 blind | cut -c12- | grep -E ^R | sed -n '1~2p' | sed 's/"//')
- 
-echo -e "${yel}$numad MADESCROWS CREATED IN THE BLOCK $blockdisplay: ${neutre}"
+
+[ -f ../CountMADescrow/madlist.txt ] && madlist=$(cat ../CountMADescrow/madlist.txt)  2>/dev/null
+echo -e "${yel}$madblock MADESCROWS CREATED IN THE BLOCK $currentblock ${neutre}"
 echo ""
 echo -e "${gr}$madlist${neutre}"
-echo ""
-rm ../CountMADescrow/lastblocksearch.txt
+rm ../CountMADescrow/madlist.txt  2>/dev/null
