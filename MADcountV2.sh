@@ -136,7 +136,7 @@ yeargraph=$beginning
 
 
 echo "clear" > ../CountMADescrow/displaylaststats.sh
-echo "cat MYGRAPHS/$date/timebasedgraph.txt" >> ../CountMADescrow/displaylaststats.sh
+echo "cat MYGRAPHS/$date/timebasedgraph.txt 2>/dev/null" >> ../CountMADescrow/displaylaststats.sh
 echo "cat MYGRAPHS/$date/yeargraph.txt" >> ../CountMADescrow/displaylaststats.sh
 echo "cat MYGRAPHS/$date/quartergraph.txt" >> ../CountMADescrow/displaylaststats.sh
 echo "cat MYGRAPHS/$date/monthlygraph.txt" >> ../CountMADescrow/displaylaststats.sh
