@@ -134,7 +134,12 @@ monthlygraph=$beginning
 quartergraph=$beginning
 yeargraph=$beginning
 
-echo "cat MYGRAPHS/$date/yeargraph.txt" > ../CountMADescrow/displaylaststats.sh
+echo "clear" > ../CountMADescrow/displaylaststats.sh
+echo "neutre='\e[0;m'" >> ../CountMADescrow/displaylaststats.sh
+echo "flred='\e[1;41m'" >> ../CountMADescrow/displaylaststats.sh
+echo -e "${flred}BLOCK BASED STATS${neutre}" >> ../CountMADescrow/displaylaststats.sh
+echo "" >> ../CountMADescrow/displaylaststats.sh
+echo "cat MYGRAPHS/$date/yeargraph.txt" >> ../CountMADescrow/displaylaststats.sh
 echo "cat MYGRAPHS/$date/quartergraph.txt" >> ../CountMADescrow/displaylaststats.sh
 echo "cat MYGRAPHS/$date/monthlygraph.txt" >> ../CountMADescrow/displaylaststats.sh
 echo "cat MYGRAPHS/$date/weeklygraph.txt" >> ../CountMADescrow/displaylaststats.sh
