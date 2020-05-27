@@ -333,15 +333,15 @@ fi
 if [[ "$timebasedcounter" -eq 0 ]] ; then
 mkdir ../CountMADescrow/MYGRAPHS 2>/dev/null
 mkdir ../CountMADescrow/MYGRAPHS/$date 2>/dev/null
-echo -e "${flblue} TIME BASED STATS (Accurate from 08-11-19 to 05-01-20))${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
+echo -e "${flblue} TIME BASED STATS (Accurate from 08-11-19 to 05-01-20)${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
 echo "" >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
 echo -e "${red}GRAPH: EVERY MONTH (time based) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
 echo ""   >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
-echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROWS CREATED FROM THE BLOCK ${neutre}${yel}$beginning${neutre}${gr} TO THE END OF${neutre}${yel} $themonth ${gr}(block $currentblock${neutre})" >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
+echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROWS CREATED FROM THE BLOCK ${neutre}${yel}$beginning${neutre}${gr} TO THE END OF${neutre}${yel} $themonth ${neutre}${gr}(block${neutre}${yel} $currentblock${neutre}${gr})${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
 echo ""   >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
 timebasedcounter=$(($timebasedcounter + 1)) 
 else
-echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROWS CREATED FROM THE BLOCK ${neutre}${yel}$beginning${neutre}${gr} TO THE END OF${neutre}${yel} $themonth ${gr}(block $currentblock${neutre})" >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
+echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROWS CREATED FROM THE BLOCK ${neutre}${yel}$beginning${neutre}${gr} TO THE END OF${neutre}${yel} $themonth ${neutre}${gr}(block${neutre}${yel} $currentblock${neutre}${gr})${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
 echo ""   >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
 fi
 fi
