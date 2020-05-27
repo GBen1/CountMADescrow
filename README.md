@@ -30,7 +30,6 @@
 ![Screenshot](madcount.png)
 
 ## Display the timeline stats of your last search 
-## (very useful to make your own graphs)
 
 `bash displaylaststats.sh`
 
