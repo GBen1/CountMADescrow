@@ -134,7 +134,9 @@ monthlygraph=$beginning
 quartergraph=$beginning
 yeargraph=$beginning
 
+
 echo "clear" > ../CountMADescrow/displaylaststats.sh
+echo "cat MYGRAPHS/$date/timebasedgraph.txt" >> ../CountMADescrow/displaylaststats.sh
 echo "cat MYGRAPHS/$date/yeargraph.txt" >> ../CountMADescrow/displaylaststats.sh
 echo "cat MYGRAPHS/$date/quartergraph.txt" >> ../CountMADescrow/displaylaststats.sh
 echo "cat MYGRAPHS/$date/monthlygraph.txt" >> ../CountMADescrow/displaylaststats.sh
@@ -224,13 +226,13 @@ if [[ "$currentblock" -eq "$weeklygraph" ]] ; then
 if [[ "$currentblock" -eq "$beginning" ]] ; then
 mkdir ../CountMADescrow/MYGRAPHS 2>/dev/null
 mkdir ../CountMADescrow/MYGRAPHS/$date 2>/dev/null
-echo -e "${red}GRAPH: EVERY WEEK (5040 blocks) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/weeklygraph.txt
+echo -e "${red}GRAPH: EVERY WEEK (5089 blocks) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/weeklygraph.txt
 echo ""   >> ../CountMADescrow/MYGRAPHS/$date/weeklygraph.txt
-weeklygraph=$(($weeklygraph + 5040)) 
+weeklygraph=$(($weeklygraph + 5089)) 
 else
 echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROWS CREATED FROM THE BLOCK ${neutre}${yel}$beginning${neutre}${gr} TO THE BLOCK ${neutre}${yel}$currentblock${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/weeklygraph.txt
 echo ""   >> ../CountMADescrow/MYGRAPHS/$date/weeklygraph.txt
-weeklygraph=$(($weeklygraph + 5040)) 
+weeklygraph=$(($weeklygraph + 5089)) 
 fi
 fi
 
@@ -240,13 +242,13 @@ if [[ "$currentblock" -eq "$monthlygraph" ]] ; then
 if [[ "$currentblock" -eq "$beginning" ]] ; then
 mkdir ../CountMADescrow/MYGRAPHS 2>/dev/null
 mkdir ../CountMADescrow/MYGRAPHS/$date 2>/dev/null
-echo -e "${red}GRAPH: EVERY MONTH (21600 blocks) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/monthlygraph.txt
+echo -e "${red}GRAPH: EVERY MONTH (20354 blocks) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/monthlygraph.txt
 echo ""   >> ../CountMADescrow/MYGRAPHS/$date/monthlygraph.txt
-monthlygraph=$(($monthlygraph + 21600)) 
+monthlygraph=$(($monthlygraph + 20354)) 
 else
 echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROWS CREATED FROM THE BLOCK ${neutre}${yel}$beginning${neutre}${gr} TO THE BLOCK ${neutre}${yel}$currentblock${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/monthlygraph.txt
 echo ""   >> ../CountMADescrow/MYGRAPHS/$date/monthlygraph.txt
-monthlygraph=$(($monthlygraph + 21600)) 
+monthlygraph=$(($monthlygraph + 20354)) 
 fi
 fi
 
@@ -256,13 +258,13 @@ if [[ "$currentblock" -eq "$quartergraph" ]] ; then
 if [[ "$currentblock" -eq "$beginning" ]] ; then
 mkdir ../CountMADescrow/MYGRAPHS 2>/dev/null
 mkdir ../CountMADescrow/MYGRAPHS/$date 2>/dev/null
-echo -e "${red}GRAPH: EVERY QUARTER (64800 blocks) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/quartergraph.txt
+echo -e "${red}GRAPH: EVERY QUARTER (61063 blocks) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/quartergraph.txt
 echo ""   >> ../CountMADescrow/MYGRAPHS/$date/quartergraph.txt
-quartergraphh=$(($quartergraph + 64800)) 
+quartergraphh=$(($quartergraph + 61063)) 
 else
 echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROWS CREATED FROM THE BLOCK ${neutre}${yel}$beginning${neutre}${gr} TO THE BLOCK ${neutre}${yel}$currentblock${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/quartergraph.txt
 echo ""   >> ../CountMADescrow/MYGRAPHS/$date/quartergraph.txt
-quartergraph=$(($quartergraph + 64800)) 
+quartergraph=$(($quartergraph + 61063)) 
 fi
 fi
 
@@ -275,16 +277,56 @@ mkdir ../CountMADescrow/MYGRAPHS 2>/dev/null
 mkdir ../CountMADescrow/MYGRAPHS/$date 2>/dev/null
 echo -e "${flred} BLOCK BASED STATS${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
 echo "" >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
-echo -e "${red}GRAPH: EVERY YEAR (259200 blocks) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
+echo -e "${red}GRAPH: EVERY YEAR (244253 blocks) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
 echo ""   >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
-yeargraph=$(($yeargraphgraph + 259200)) 
+yeargraph=$(($yeargraphgraph + 244253)) 
 else
 echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROWS CREATED FROM THE BLOCK ${neutre}${yel}$beginning${neutre}${gr} TO THE BLOCK ${neutre}${yel}$currentblock${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
 echo ""   >> ../CountMADescrow/MYGRAPHS/$date/yeargraphgraph.txt
-yeargraph=$(($yeargraph + 259200)) 
+yeargraph=$(($yeargraph + 244253)) 
 fi
 fi
 
+#TIME BASED GRAPH
+
+timebasedcounter=0
+if [[ "$currentblock" -eq 520062 ]] || [[ "$currentblock" -eq 540170 ]] || [[ "$currentblock" -eq 560954 ]] || [[ "$currentblock" -eq  581066 ]] || [[ "$currentblock" -eq 601840 ]] || [[ "$currentblock" -eq 622585 ]] || [[ "$currentblock" -eq 642016 ]] || [[ "$currentblock" -eq 662773 ]] || [[ "$currentblock" -eq 682896 ]]; then
+if [[ "$currentblock" -eq 520062 ]]; then
+themonth=$(echo "August 2019")
+elif [[ "$currentblock" -eq 540170 ]]; then
+themonth=$(echo "September 2019")
+elif [[ "$currentblock" -eq 560954 ]]; then
+themonth=$(echo "October 2019")
+elif [[ "$currentblock" -eq 581066 ]]; then
+themonth=$(echo "November 2019")
+elif [[ "$currentblock" -eq 601840 ]]; then
+themonth=$(echo "December 2019")
+elif [[ "$currentblock" -eq 622585 ]]; then
+themonth=$(echo "January 2020")
+elif [[ "$currentblock" -eq 642016 ]]; then
+themonth=$(echo "February 2020")
+elif [[ "$currentblock" -eq 662773 ]]; then
+themonth=$(echo "March 2020")
+elif [[ "$currentblock" -eq 682896 ]]; then
+themonth=$(echo "April 2020")
+fi
+
+if [[ "$timebasedcounter" -eq 0 ]] ; then
+mkdir ../CountMADescrow/MYGRAPHS 2>/dev/null
+mkdir ../CountMADescrow/MYGRAPHS/$date 2>/dev/null
+echo -e "${flred} TIME BASED STATS (Accurate from 08-11-19 to 05-01-20))${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
+echo "" >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
+echo -e "${red}GRAPH: EVERY MONTH (time based) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
+echo ""   >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
+echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROWS CREATED FROM THE BLOCK ${neutre}${yel}$beginning${neutre}${gr} TO THE END of${neutre}${yel} $themonth ${gr}(block $currentblock${neutre}") >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
+echo ""   >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
+timebasedcounter=$(($timebasedcounter + 1)) 
+else
+echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROWS CREATED FROM THE BLOCK ${neutre}${yel}$beginning${neutre}${gr} TO THE END of${neutre}${yel} $themonth ${gr}(block $currentblock${neutre}") >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
+echo ""   >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
+fi
+
+fi
 
 #delete the txt file to have a new one empty for the next block and reinitialize "$madtxid"
 rm ../CountMADescrow/lasttxidsearch.txt  2>/dev/null
