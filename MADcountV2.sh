@@ -110,7 +110,7 @@ echo -e "${flred}TRY AGAIN IN FEW MINUTES ${neutre}"
 exit
 fi
 
-#delete this file to not keep the informations of the latest txid scanned if this script has already been used
+#delete this file to not keep the informations of the latest txid scanned if this script has already been launched and stoped before the end of the loop
 rm ../CountMADescrow/lasttxidsearch.txt 2>/dev/null
 
 #what is the highest block synchronized on this node ?
@@ -126,6 +126,19 @@ echo -e "${yel}From which block do you want to count the Private MADescrow creat
 currentblock=$(echo $currentblock | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA-Z]| sed -n '/^[[:digit:]]*$/p' )
 beginning=$(echo $currentblock | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA-Z]| sed -n '/^[[:digit:]]*$/p' )
 done
+
+#These lines are going to be usef is you want to make your own graph:
+date=$(date | sed 's/ //' |  sed 's/ //'  |  sed 's/ //'  |  sed 's/ //'  |  sed 's/ //')
+weeklygraph=$beginning
+monthlygraph=$beginning
+quartergraph=$beginning
+yeargraph=$beginning
+
+echo "cat MYGRAPHS/$date/yeargraphgraph.txt" > ../CountMADescrow/displaylaststats.sh
+echo "cat MYGRAPHS/$date/quartergraph.txt" >> ../CountMADescrow/displaylaststats.sh
+echo "cat MYGRAPHS/$date/monthlygraph.txt" >> ../CountMADescrow/displaylaststats.sh
+echo "cat MYGRAPHS/$date/weeklygraph.txt" >> ../CountMADescrow/displaylaststats.sh
+
 
 #initialize the counter
 madtot=0
@@ -200,6 +213,75 @@ done
 madblock=$(printf '%.3f\n' "$(echo "$madtxid" "+" "$madblock" | bc -l )")
 madblock=$(echo "$madblock" | cut -d "." -f 1 | cut -d "," -f 1)
 
+#MAKE YOUR OWN GRAPH  !
+#Check the results in the folder "MYGRAPH" at the end of this script or just enter "bash displaylaststats.sh" to display the last stats
+#Note: 520063 = first block of september 2019
+
+#WEEKLY GRAPH
+
+if [[ "$currentblock" -eq "$weeklygraph" ]] ; then
+if [[ "$currentblock" -eq "$beginning" ]] ; then
+mkdir ../CountMADescrow/MYGRAPHS 2>/dev/null
+mkdir ../CountMADescrow/MYGRAPHS/$date 2>/dev/null
+echo -e "${red}GRAPH: EVERY WEEK (5040 blocks) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/weeklygraph.txt
+echo ""   >> ../CountMADescrow/MYGRAPHS/$date/weeklygraph.txt
+weeklygraph=$(($weeklygraph + 5040)) 
+else
+echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROWS CREATED FROM THE BLOCK ${neutre}${yel}$beginning${neutre}${gr} TO THE BLOCK ${neutre}${yel}$currentblock${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/weeklygraph.txt
+echo ""   >> ../CountMADescrow/MYGRAPHS/$date/weeklygraph.txt
+weeklygraph=$(($weeklygraph + 5040)) 
+fi
+fi
+
+#MONTHLY GRAPH
+
+if [[ "$currentblock" -eq "$monthlygraph" ]] ; then
+if [[ "$currentblock" -eq "$beginning" ]] ; then
+mkdir ../CountMADescrow/MYGRAPHS 2>/dev/null
+mkdir ../CountMADescrow/MYGRAPHS/$date 2>/dev/null
+echo -e "${red}GRAPH: EVERY MONTH (21600 blocks) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/monthlygraph.txt
+echo ""   >> ../CountMADescrow/MYGRAPHS/$date/monthlygraph.txt
+monthlygraph=$(($monthlygraph + 21600)) 
+else
+echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROWS CREATED FROM THE BLOCK ${neutre}${yel}$beginning${neutre}${gr} TO THE BLOCK ${neutre}${yel}$currentblock${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/monthlygraph.txt
+echo ""   >> ../CountMADescrow/MYGRAPHS/$date/monthlygraph.txt
+monthlygraph=$(($monthlygraph + 21600)) 
+fi
+fi
+
+#QUARTERLY
+
+if [[ "$currentblock" -eq "$quartergraph" ]] ; then
+if [[ "$currentblock" -eq "$beginning" ]] ; then
+mkdir ../CountMADescrow/MYGRAPHS 2>/dev/null
+mkdir ../CountMADescrow/MYGRAPHS/$date 2>/dev/null
+echo -e "${red}GRAPH: EVERY QUARTER (64800 blocks) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/quartergraph.txt
+echo ""   >> ../CountMADescrow/MYGRAPHS/$date/quartergraph.txt
+quartergraphh=$(($quartergraph + 64800)) 
+else
+echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROWS CREATED FROM THE BLOCK ${neutre}${yel}$beginning${neutre}${gr} TO THE BLOCK ${neutre}${yel}$currentblock${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/quartergraph.txt
+echo ""   >> ../CountMADescrow/MYGRAPHS/$date/quartergraph.txt
+quartergraphh=$(($quartergraph + 64800)) 
+fi
+fi
+
+
+#YEARLY
+
+if [[ "$currentblock" -eq "$yeargraph" ]] ; then
+if [[ "$currentblock" -eq "$beginning" ]] ; then
+mkdir ../CountMADescrow/MYGRAPHS 2>/dev/null
+mkdir ../CountMADescrow/MYGRAPHS/$date 2>/dev/null
+echo -e "${red}GRAPH: EVERY YEAR (259200 blocks) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/yeargraphgraph.txt
+echo ""   >> ../CountMADescrow/MYGRAPHS/$date/yeargraphgraph.txt
+yeargraphgraphh=$(($yeargraphgraph + 259200)) 
+else
+echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROWS CREATED FROM THE BLOCK ${neutre}${yel}$beginning${neutre}${gr} TO THE BLOCK ${neutre}${yel}$currentblock${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
+echo ""   >> ../CountMADescrow/MYGRAPHS/$date/yeargraphgraph.txt
+yeargraphh=$(($yeargraph + 259200)) 
+fi
+fi
+
 
 #delete the txt file to have a new one empty for the next block and reinitialize "$madtxid"
 rm ../CountMADescrow/lasttxidsearch.txt  2>/dev/null
@@ -214,8 +296,8 @@ madtot=$(printf '%.3f\n' "$(echo "$madtot" "+" "$madblock" | bc -l )")
 madtot=$(echo "$madtot" | cut -d "." -f 1 | cut -d "," -f 1)
 
 
-echo -e "${yel}$madblock${neutre} ${gr}PRIVATE MADESCROW CREATED IN THE BLOCK $currentblock${neutre}"
-echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROWS CREATED SINCE THE BLOCK $beginning${neutre}"
+echo -e "${yel}$madblock${neutre} ${gr}PRIVATE MADESCROW CREATED IN THE BLOCK ${neutre}${yel}$currentblock${neutre}"
+echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROWS CREATED SINCE THE BLOCK ${neutre}${yel}$beginning${neutre}"
 echo ""
 
 
