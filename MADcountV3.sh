@@ -118,7 +118,7 @@ rm ../CountMADescrow/lasttxidsearch.txt 2>/dev/null
 latestblock=$(./particl-cli getblockcount) 
 
 currentblock=0
-while ((currentblock < 506469))
+while ((currentblock < 506469)) || ((latestblock < currentblock))
 do
 clear
 #It s not useful t start counting before the block 506469 for the reasons explained below
