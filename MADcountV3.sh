@@ -279,7 +279,7 @@ mkdir ../CountMADescrow/MYGRAPHS 2>/dev/null
 mkdir ../CountMADescrow/MYGRAPHS/$date 2>/dev/null
 echo -e "${red}GRAPH: EVERY QUARTER (61063 blocks) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/quartergraph.txt
 echo ""   >> ../CountMADescrow/MYGRAPHS/$date/quartergraph.txt
-quartergraphh=$(($quartergraph + 61063)) 
+quartergraph=$(($quartergraph + 61063)) 
 else
 echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROWS CREATED FROM THE BLOCK ${neutre}${yel}$beginning${neutre}${gr} TO THE BLOCK ${neutre}${yel}$currentblock${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/quartergraph.txt
 echo ""   >> ../CountMADescrow/MYGRAPHS/$date/quartergraph.txt
@@ -298,10 +298,10 @@ echo -e "${flblue} BLOCK BASED STATS${neutre}" >> ../CountMADescrow/MYGRAPHS/$da
 echo "" >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
 echo -e "${red}GRAPH: EVERY YEAR (244253 blocks) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
 echo ""   >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
-yeargraph=$(($yeargraphgraph + 244253)) 
+yeargraph=$(($yeargraphh + 244253)) 
 else
 echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROWS CREATED FROM THE BLOCK ${neutre}${yel}$beginning${neutre}${gr} TO THE BLOCK ${neutre}${yel}$currentblock${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
-echo ""   >> ../CountMADescrow/MYGRAPHS/$date/yeargraphgraph.txt
+echo ""   >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
 yeargraph=$(($yeargraph + 244253)) 
 fi
 fi
