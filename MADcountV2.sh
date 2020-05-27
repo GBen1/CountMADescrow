@@ -145,6 +145,7 @@ echo "cat MYGRAPHS/$date/weeklygraph.txt" >> ../CountMADescrow/displaylaststats.
 
 #initialize the counter
 madtot=0
+timebasedcounter=0
 #for each block do...
 while [ "$latestblock" -gt "$currentblock" ]
 do 
@@ -194,8 +195,8 @@ line2=$(printf '%.3f\n' "$(echo "$multisigcount" "+" "2" | bc -l )")
 line2=$(echo "$line1" | cut -d "." -f 1 | cut -d "," -f 1)
 
 #a multisig address begin by R and a madescrow is made using Confidential transaction (blind)
-multisig1=$(cat ../CountMADescrow/lasttxidsearch.txt | grep -A 10 blind | cut -c12- | grep -E ^R | sed 's/"//' | sed -n "$line1 p")
-multisig2=$(cat ../CountMADescrow/lasttxidsearch.txt | grep -A 10 blind | cut -c12- | grep -E ^R | sed 's/"//' | sed -n "$line2 p")
+multisig1=$(cat ../CountMADescrow/lasttxidsearch.txt | grep -A 10 blind |  grep -A 4 scripthash | cut -c12- | grep -E ^R | sed 's/"//' | sed -n "$line1 p")
+multisig2=$(cat ../CountMADescrow/lasttxidsearch.txt | grep -A 10 blind |  grep -A 4 scripthash | cut -c12- | grep -E ^R | sed 's/"//' | sed -n "$line2 p")
 
 if [[ "$multisig1" = "$multisig2"  ]] ; then
 
@@ -289,7 +290,7 @@ fi
 
 #TIME BASED GRAPH
 
-timebasedcounter=0
+
 if [[ "$currentblock" -eq 520062 ]] || [[ "$currentblock" -eq 540170 ]] || [[ "$currentblock" -eq 560954 ]] || [[ "$currentblock" -eq  581066 ]] || [[ "$currentblock" -eq 601840 ]] || [[ "$currentblock" -eq 622585 ]] || [[ "$currentblock" -eq 642016 ]] || [[ "$currentblock" -eq 662773 ]] || [[ "$currentblock" -eq 682896 ]]; then
 if [[ "$currentblock" -eq 520062 ]]; then
 themonth=$(echo "August 2019")
