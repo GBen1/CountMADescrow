@@ -180,8 +180,8 @@ rawtx=$(./particl-cli getrawtransaction $txid)
 #decode raw tx and print the current tx in a txt file (and add it to the other tx if it s not the first loop of this block)
 ./particl-cli decoderawtransaction $rawtx >> ../CountMADescrow/lasttxidsearch.txt 2>/dev/null
 
-#how much multisig address in this txid
-nbmultisig=$(cat ../CountMADescrow/lasttxidsearch.txt | grep -A 10 blind | cut -c12- | grep -E ^R | sed 's/"//' | wc -l)
+#how much multisig address in this txid ?, a multisig address begins by R (grep -E ^R) and a madescrow is made using Confidential transaction (grep blind), moreover a script is involved (grep scripthash)
+nbmultisig=$(cat ../CountMADescrow/lasttxidsearch.txt | grep -A 10 blind | grep -A 4 scripthash | cut -c12- | grep -E ^R | sed 's/"//' | wc -l)
 
 
 multisigcount=0
@@ -195,7 +195,7 @@ line1=$(echo "$line1" | cut -d "." -f 1 | cut -d "," -f 1)
 line2=$(printf '%.3f\n' "$(echo "$multisigcount" "+" "2" | bc -l )")
 line2=$(echo "$line1" | cut -d "." -f 1 | cut -d "," -f 1)
 
-#a multisig address begins by R (grep -E ^R) and a madescrow is made using Confidential transaction (grep blind), moreover a script is involved (grep scripthash)
+
 multisig1=$(cat ../CountMADescrow/lasttxidsearch.txt | grep -A 10 blind |  grep -A 4 scripthash | cut -c12- | grep -E ^R | sed 's/"//' | sed -n "$line1 p")
 multisig2=$(cat ../CountMADescrow/lasttxidsearch.txt | grep -A 10 blind |  grep -A 4 scripthash | cut -c12- | grep -E ^R | sed 's/"//' | sed -n "$line2 p")
 
