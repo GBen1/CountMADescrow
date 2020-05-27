@@ -117,12 +117,12 @@ rm ../CountMADescrow/lasttxidsearch.txt 2>/dev/null
 latestblock=$(./particl-cli getblockcount) 
 
 currentblock=0
-while ((currentblock < 506468))
+while ((currentblock < 506469))
 do
 clear
-#It s not useful t start counting before the block 506468 for the reason explained below
+#It s not useful t start counting before the block 506469 for the reasons explained below
 echo -e "${red}The first Private MADescrow has been created during the block 506469 we are at the block $latestblock ${neutre}"
-echo -e "${yel}From which block do you want to count the Private MADescrow creations ?${neutre}${gr}[506468;$latestblock]${neutre}" && read currentblock
+echo -e "${yel}From which block do you want to count the Private MADescrow creations ?${neutre}${gr}[506469;$latestblock]${neutre}" && read currentblock
 currentblock=$(echo $currentblock | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA-Z]| sed -n '/^[[:digit:]]*$/p' )
 beginning=$(echo $currentblock | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA-Z]| sed -n '/^[[:digit:]]*$/p' )
 done
