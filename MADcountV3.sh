@@ -7,6 +7,7 @@ gr='\e[1;32m'
 red='\e[1;31m'
 bl='\e[1;36m'
 flred='\e[1;41m'
+flgreen='\e[42m'
 
 cd
 
@@ -293,7 +294,7 @@ if [[ "$currentblock" -eq "$yeargraph" ]] ; then
 if [[ "$currentblock" -eq "$beginning" ]] ; then
 mkdir ../CountMADescrow/MYGRAPHS 2>/dev/null
 mkdir ../CountMADescrow/MYGRAPHS/$date 2>/dev/null
-echo -e "${flred} BLOCK BASED STATS${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
+echo -e "${flgreen} BLOCK BASED STATS${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
 echo "" >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
 echo -e "${red}GRAPH: EVERY YEAR (244253 blocks) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
 echo ""   >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
@@ -332,7 +333,7 @@ fi
 if [[ "$timebasedcounter" -eq 0 ]] ; then
 mkdir ../CountMADescrow/MYGRAPHS 2>/dev/null
 mkdir ../CountMADescrow/MYGRAPHS/$date 2>/dev/null
-echo -e "${flred} TIME BASED STATS (Accurate from 08-11-19 to 05-01-20))${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
+echo -e "${flgreen} TIME BASED STATS (Accurate from 08-11-19 to 05-01-20))${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
 echo "" >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
 echo -e "${red}GRAPH: EVERY MONTH (time based) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
 echo ""   >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
