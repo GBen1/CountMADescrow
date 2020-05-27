@@ -217,6 +217,23 @@ done
 madblock=$(printf '%.3f\n' "$(echo "$madtxid" "+" "$madblock" | bc -l )")
 madblock=$(echo "$madblock" | cut -d "." -f 1 | cut -d "," -f 1)
 
+
+#delete the txt file to have a new one empty for the next txid and reinitialize "$madtxid"
+rm ../CountMADescrow/lasttxidsearch.txt  2>/dev/null
+
+currenttx=$(($currenttx + 1))
+done
+
+
+#increase the madescrow counter if there are madescrows in this block
+madtot=$(printf '%.3f\n' "$(echo "$madtot" "+" "$madblock" | bc -l )")
+madtot=$(echo "$madtot" | cut -d "." -f 1 | cut -d "," -f 1)
+
+
+echo -e "${yel}$madblock${neutre} ${gr}PRIVATE MADESCROW CREATED IN THE BLOCK ${neutre}${yel}$currentblock${neutre}"
+echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROWS CREATED SINCE THE BLOCK ${neutre}${yel}$beginning${neutre}"
+echo ""
+
 #MAKE YOUR OWN GRAPH  !
 #Check the results in the folder "MYGRAPH" at the end of this script or just enter "bash displaylaststats.sh" to display the last stats
 #Note: 520063 = first block of september 2019
@@ -326,25 +343,7 @@ else
 echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROWS CREATED FROM THE BLOCK ${neutre}${yel}$beginning${neutre}${gr} TO THE END OF${neutre}${yel} $themonth ${gr}(block $currentblock${neutre})" >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
 echo ""   >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
 fi
-
 fi
-
-#delete the txt file to have a new one empty for the next block and reinitialize "$madtxid"
-rm ../CountMADescrow/lasttxidsearch.txt  2>/dev/null
-
-currenttx=$(($currenttx + 1))
-done
-
-
-
-#increase the madescrow counter if there are madescrows in this block
-madtot=$(printf '%.3f\n' "$(echo "$madtot" "+" "$madblock" | bc -l )")
-madtot=$(echo "$madtot" | cut -d "." -f 1 | cut -d "," -f 1)
-
-
-echo -e "${yel}$madblock${neutre} ${gr}PRIVATE MADESCROW CREATED IN THE BLOCK ${neutre}${yel}$currentblock${neutre}"
-echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROWS CREATED SINCE THE BLOCK ${neutre}${yel}$beginning${neutre}"
-echo ""
 
 
 currentblock=$(($currentblock + 1)) 
