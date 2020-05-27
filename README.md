@@ -15,7 +15,7 @@
 
 **Make you own graph !**
 
->After using this script for the first time ( `bash MADcountV2.sh`) you will be able to display the timeline (weekly/monthly/quarterly/yearly) stats of your last search in using this command: `bash displaylaststats.sh`
+>After using this script for the first time ( `bash MADcountV3.sh`) you will be able to display the timeline (weekly/monthly/quarterly/yearly) stats of your last search in using this command: `bash displaylaststats.sh`
 
 ***
 
@@ -25,7 +25,7 @@
 
 ## Start the counter from block X to the latest one (X > 506468)
 
-`bash MADcountV2.sh`
+`bash MADcountV3.sh`
 
 ![Screenshot](madcounter.png)
 
