@@ -9,7 +9,7 @@
 
 **MADcountV2.sh verify the following conditions to count a MADescrow:**
 
->"If there are 2 blind transactions in the same txid which deposit the same Multisig address there is a MADescrow in this block"
+>"If there are 2 blind transactions in the same txid which deposit the same Multisig address in using a script there is a MADescrow in this block"
 
 ***
 
