@@ -170,8 +170,8 @@ line2=$(printf '%.3f\n' "$(echo "$multisigcount" "+" "2" | bc -l )")
 line2=$(echo "$line1" | cut -d "." -f 1 | cut -d "," -f 1)
 
 #a multisig address begin by R and a madescrow is made using Confidential transaction (blind)
-multisig1=$(cat ../CountMADescrow/lasttxidsearch.txt | grep -A 10 blind | cut -c12- | grep -E ^R | sed 's/"//' | sed -n "$line1 p")
-multisig2=$(cat ../CountMADescrow/lasttxidsearch.txt | grep -A 10 blind | cut -c12- | grep -E ^R | sed 's/"//' | sed -n "$line2 p")
+multisig1=$(cat ../CountMADescrow/lasttxidsearch.txt | grep -A 10 blind |  grep -A 4 scripthash | cut -c12- | grep -E ^R | sed 's/"//' | sed -n "$line1 p")
+multisig2=$(cat ../CountMADescrow/lasttxidsearch.txt | grep -A 10 blind |  grep -A 4 scripthash | cut -c12- | grep -E ^R | sed 's/"//' | sed -n "$line2 p")
 
 if [[ "$multisig1" = "$multisig2"  ]] ; then
 
