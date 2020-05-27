@@ -15,7 +15,7 @@
 
 **Make you own graph !**
 
->After using this script for the first time ( `bash MADcountV2.sh`) you will be able to display a timeline (weekly/monthly/quarterly/yearly) stats of your last search in using this command: `bash displaylaststats.sh`
+>After using this script for the first time ( `bash MADcountV2.sh`) you will be able to display the timeline (weekly/monthly/quarterly/yearly) stats of your last search in using this command: `bash displaylaststats.sh`
 
 ***
 
