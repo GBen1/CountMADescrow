@@ -13,6 +13,12 @@
 
 ***
 
+**Make you own graph !**
+
+>After using this script for the first time ( `bash MADcountV2.sh`) you will be able to display a weekly/monthly/quarterly/yearly analyse of your last search in using this command: `bash displaylaststats.sh`
+
+***
+
 ## Download
 
 `git clone https://github.com/GBen1/CountMADescrow.git`
@@ -22,6 +28,10 @@
 `bash MADcountV2.sh`
 
 ![Screenshot](madcounter.png)
+
+## Display the weekly/monthly/quarterly/yearly stats of your last search (very useful to make your own graphs)
+
+`bash displaylaststats.sh`
 
 ## Check the MADescrows in a specific block
 
