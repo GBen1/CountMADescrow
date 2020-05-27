@@ -261,7 +261,7 @@ quartergraphh=$(($quartergraph + 64800))
 else
 echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROWS CREATED FROM THE BLOCK ${neutre}${yel}$beginning${neutre}${gr} TO THE BLOCK ${neutre}${yel}$currentblock${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/quartergraph.txt
 echo ""   >> ../CountMADescrow/MYGRAPHS/$date/quartergraph.txt
-quartergraphh=$(($quartergraph + 64800)) 
+quartergraph=$(($quartergraph + 64800)) 
 fi
 fi
 
