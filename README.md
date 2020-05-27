@@ -7,7 +7,7 @@
 ![Screenshot](mad-2.png)
 
 
-**MADcountV2.sh verify the following conditions to count a MADescrow:**
+**MADcountV3.sh verify the following conditions to count a MADescrow:**
 
 >"If there are 2 blind transactions in the same txid which deposit the same Multisig address in using a script there is a MADescrow in this block"
 
