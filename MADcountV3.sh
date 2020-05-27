@@ -122,7 +122,7 @@ while ((currentblock < 506469)) || ((latestblock < currentblock))
 do
 clear
 #It s not useful t start counting before the block 506469 for the reasons explained below
-echo -e "${red}The first Private MADescrow has been created during the block 506469 we are at the block $latestblock ${neutre}"
+echo -e "${yel}The first Private MADescrow has been created during the block 506469 we are at the block $latestblock ${neutre}"
 echo -e "${yel}From which block do you want to count the Private MADescrow creations ?${neutre}${gr}[506469;$latestblock]${neutre}" && read currentblock
 currentblock=$(echo $currentblock | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA-Z]| sed -n '/^[[:digit:]]*$/p' )
 beginning=$(echo $currentblock | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA-Z]| sed -n '/^[[:digit:]]*$/p' )
@@ -236,8 +236,8 @@ echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROWS CREATED SINCE THE BLOCK 
 echo ""
 
 #MAKE YOUR OWN GRAPH  !
-#Check the results in the folder "MYGRAPH" at the end of this script or just enter "bash displaylaststats.sh" to display the last stats
-#Note: 520063 = first block of september 2019
+#Check the results in the folder "MYGRAPH" at the end of this script or just enter "bash displaylaststats.sh" to display the last stats of your last search at the end of the script
+
 
 #WEEKLY GRAPH
 
