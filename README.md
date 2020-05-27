@@ -33,6 +33,8 @@
 
 `bash displaylaststats.sh`
 
+![Screenshot](timebasedstats.png)
+
 ## Check the MADescrows in a specific block
 
  `bash howmuchmadescrowinthisblock.sh`
