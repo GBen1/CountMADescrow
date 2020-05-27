@@ -127,7 +127,7 @@ currentblock=$(echo $currentblock | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a
 beginning=$(echo $currentblock | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA-Z]| sed -n '/^[[:digit:]]*$/p' )
 done
 
-#These lines are going to be usef is you want to make your own graph:
+#These lines are going to be useful is you want to make your own graph:
 date=$(date | sed 's/ //' |  sed 's/ //'  |  sed 's/ //'  |  sed 's/ //'  |  sed 's/ //')
 weeklygraph=$beginning
 monthlygraph=$beginning
