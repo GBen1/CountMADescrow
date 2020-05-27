@@ -155,7 +155,7 @@ rawtx=$(./particl-cli getrawtransaction $txid)
 ./particl-cli decoderawtransaction $rawtx >> ../CountMADescrow/lasttxidsearch.txt 2>/dev/null
 
 #how much multisig address in this txid
-nbmultisig=$(cat ../CountMADescrow/lasttxidsearch.txt | grep -A 10 blind | cut -c12- | grep -E ^R | sed 's/"//' | wc -l)
+nbmultisig=$(cat ../CountMADescrow/lasttxidsearch.txt | grep -A 10 blind  |  grep -A 4 scripthash | cut -c12- | grep -E ^R | sed 's/"//' | wc -l)
 
 
 multisigcount=0
