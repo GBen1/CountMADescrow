@@ -2,7 +2,7 @@
 
 **Mutual Assured Destruction ESCROW Counter for the Particl Marketplace:**
 
-![Screenshot](mad1-1.png)
+![Screenshot](mad11.png)
 
 ![Screenshot](mad2-2.png)
 
