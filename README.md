@@ -2,9 +2,9 @@
 
 **Mutual Assured Destruction ESCROW Counter for the Particl Marketplace:**
 
-![Screenshot](mad-1.png)
+![Screenshot](mad1-1.png)
 
-![Screenshot](mad-2.png)
+![Screenshot](mad1-2.png)
 
 
 **MADcountV3.sh verify the following conditions to count a MADescrow:**
