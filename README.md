@@ -4,7 +4,7 @@
 
 ![Screenshot](mad1-1.png)
 
-![Screenshot](mad2-1.png)
+![Screenshot](mad2-2.png)
 
 
 **MADcountV3.sh verify the following conditions to count a MADescrow:**
