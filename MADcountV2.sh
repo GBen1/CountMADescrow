@@ -135,10 +135,6 @@ quartergraph=$beginning
 yeargraph=$beginning
 
 echo "clear" > ../CountMADescrow/displaylaststats.sh
-echo "neutre='\e[0;m'" >> ../CountMADescrow/displaylaststats.sh
-echo "flred='\e[1;41m'" >> ../CountMADescrow/displaylaststats.sh
-echo "echo -e "${flred}BLOCK BASED STATS${neutre}"" >> ../CountMADescrow/displaylaststats.sh
-echo "" >> ../CountMADescrow/displaylaststats.sh
 echo "cat MYGRAPHS/$date/yeargraph.txt" >> ../CountMADescrow/displaylaststats.sh
 echo "cat MYGRAPHS/$date/quartergraph.txt" >> ../CountMADescrow/displaylaststats.sh
 echo "cat MYGRAPHS/$date/monthlygraph.txt" >> ../CountMADescrow/displaylaststats.sh
@@ -277,6 +273,8 @@ if [[ "$currentblock" -eq "$yeargraph" ]] ; then
 if [[ "$currentblock" -eq "$beginning" ]] ; then
 mkdir ../CountMADescrow/MYGRAPHS 2>/dev/null
 mkdir ../CountMADescrow/MYGRAPHS/$date 2>/dev/null
+echo -e "${flred} BLOCK BASED STATS${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
+echo "" >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
 echo -e "${red}GRAPH: EVERY YEAR (259200 blocks) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
 echo ""   >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
 yeargraph=$(($yeargraphgraph + 259200)) 
