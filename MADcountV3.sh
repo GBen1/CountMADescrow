@@ -7,7 +7,7 @@ gr='\e[1;32m'
 red='\e[1;31m'
 bl='\e[1;36m'
 flred='\e[1;41m'
-flblue='\e[44m'
+flblue='\e[1;44m'
 
 cd
 
