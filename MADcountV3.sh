@@ -327,7 +327,7 @@ if [[ "$currentblock" -eq "$yeargraph" ]] ; then
 if [[ "$currentblock" -eq "$beginning" ]] ; then
 mkdir ../CountMADescrow/MYGRAPHS 2>/dev/null
 mkdir ../CountMADescrow/MYGRAPHS/$date 2>/dev/null
-echo -e "${flblue} BLOCK BASED STATS${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
+echo -e "${flblue}BLOCK BASED STATS${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
 echo "" >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
 echo -e "${red}GRAPH: EVERY YEAR (244253 blocks) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
 echo ""   >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
