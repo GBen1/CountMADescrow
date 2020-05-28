@@ -231,11 +231,9 @@ if [[ "$madlist" -eq 0 ]] ; then
 mkdir ../CountMADescrow/MYGRAPHS 2>/dev/null
 mkdir ../CountMADescrow/MYGRAPHS/$date 2>/dev/null
 echo -e "${gr}BLOCK ${neutre}${yel}$currentblock ${neutre}: ${gr}$multisig1${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/madlist.txt
-echo ""   >> ../CountMADescrow/MYGRAPHS/$date/madlist.txt
 madlist=$(($madlist + 1)) 
 else
 echo -e "${gr}BLOCK ${neutre}${yel}$currentblock ${neutre}: ${gr}$multisig1${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/madlist.txt
-echo ""   >> ../CountMADescrow/MYGRAPHS/$date/madlist.txt
 fi
 
 
