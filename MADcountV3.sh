@@ -137,6 +137,10 @@ yeargraph=$beginning
 
 #create displaylaststats.sh
 echo "clear" > ../CountMADescrow/displaylaststats.sh
+echo "echo -e \"\e[1;44mTIME BASED STATS (Available from 08-11-19 (block 506469) to 05-01-20 (block 682896)\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
+echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
+echo "echo -e \"\e[1;31mGRAPH: EVERY MONTH (time based)\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
+echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
 echo "cat MYGRAPHS/$date/timebasedgraph.txt 2>/dev/null" >> ../CountMADescrow/displaylaststats.sh
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
@@ -366,10 +370,6 @@ fi
 if [[ "$timebasedcounter" -eq 0 ]] ; then
 mkdir ../CountMADescrow/MYGRAPHS 2>/dev/null
 mkdir ../CountMADescrow/MYGRAPHS/$date 2>/dev/null
-echo -e "${flblue} TIME BASED STATS (Available from 08-11-19 (block 506469) to 05-01-20 (block 682896)${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
-echo "" >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
-echo -e "${red}GRAPH: EVERY MONTH (time based) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
-echo ""   >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
 echo -e "${yel}$madtot${neutre} ${gr}PRIVATE MADESCROWS CREATED FROM THE BLOCK ${neutre}${yel}$beginning${neutre}${gr} TO THE END OF${neutre}${yel} $themonth ${neutre}${gr}(block${neutre}${yel} $currentblock${neutre}${gr})${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
 echo ""   >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
 timebasedcounter=$(($timebasedcounter + 1)) 
