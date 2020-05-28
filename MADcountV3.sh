@@ -138,19 +138,19 @@ yeargraph=$beginning
 #create displaylaststats.sh
 echo "clear" > ../CountMADescrow/displaylaststats.sh
 echo "cat MYGRAPHS/$date/timebasedgraph.txt 2>/dev/null" >> ../CountMADescrow/displaylaststats.sh
-echo "" >> ../CountMADescrow/displaylaststats.sh
-echo "" >> ../CountMADescrow/displaylaststats.sh
+echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
+echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
 echo "read -p \"\$(echo -e \"\e[1;36mPress [Enter] key to continue...\e[0;m\")\"" >> ../CountMADescrow/displaylaststats.sh
 echo "clear" >> ../CountMADescrow/displaylaststats.sh
 echo "cat MYGRAPHS/$date/yeargraph.txt" >> ../CountMADescrow/displaylaststats.sh
 echo "cat MYGRAPHS/$date/quartergraph.txt" >> ../CountMADescrow/displaylaststats.sh
 echo "cat MYGRAPHS/$date/monthlygraph.txt" >> ../CountMADescrow/displaylaststats.sh
-echo "" >> ../CountMADescrow/displaylaststats.sh
-echo "" >> ../CountMADescrow/displaylaststats.sh
+echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
+echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
 echo "read -p \"\$(echo -e \"\e[1;36mPress [Enter] key to continue...\e[0;m\")\"" >> ../CountMADescrow/displaylaststats.sh
 echo "clear" >> ../CountMADescrow/displaylaststats.sh
 echo "echo -e \"\e[1;44mBLOCK BASED STATS\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
-echo "" >> ../CountMADescrow/displaylaststats.sh
+echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
 echo "cat MYGRAPHS/$date/weeklygraph.txt" >> ../CountMADescrow/displaylaststats.sh
 
 
