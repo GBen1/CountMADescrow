@@ -152,12 +152,20 @@ echo "clear" >> ../CountMADescrow/displaylaststats.sh
 echo "echo -e \"\e[1;44mBLOCK BASED STATS\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
 echo "cat MYGRAPHS/$date/weeklygraph.txt" >> ../CountMADescrow/displaylaststats.sh
+echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
+echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
+echo "read -p \"\$(echo -e \"\e[1;36mPress [Enter] key to continue...\e[0;m\")\"" >> ../CountMADescrow/displaylaststats.sh
+echo "clear" >> ../CountMADescrow/displaylaststats.sh
+echo "echo -e \"\e[1;44mMADESCROWS FOUND\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
+echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
+echo "cat MYGRAPHS/$date/madlist.txt" >> ../CountMADescrow/displaylaststats.sh
 
 
 
 
-#initialize the counter
+#initialize the counters
 madtot=0
+madlist=0
 timebasedcounter=0
 #for each block do...
 while [ "$latestblock" -gt "$currentblock" ]
@@ -216,6 +224,19 @@ if [[ "$multisig1" = "$multisig2"  ]] ; then
 #increase madtxid counter if there are madescrows in this txid
 madtxid=$(printf '%.3f\n' "$(echo "$madtxid" "+" "1" | bc -l )")
 madtxid=$(echo "$madtxid" | cut -d "." -f 1 | cut -d "," -f 1)
+
+
+if [[ "$madlist" -eq 0 ]] ; then
+mkdir ../CountMADescrow/MYGRAPHS 2>/dev/null
+mkdir ../CountMADescrow/MYGRAPHS/$date 2>/dev/null
+echo -e "${gr}BLOCK ${neutre}${yel}$currentblock ${neutre}: ${gr}$multisig1${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/madlist.txt
+echo ""   >> ../CountMADescrow/MYGRAPHS/$date/madlist.txt
+madlist=$(($madlist + 1)) 
+else
+echo -e "${gr}BLOCK ${neutre}${yel}$currentblock ${neutre}: ${gr}$multisig1${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/madlist.txt
+echo ""   >> ../CountMADescrow/MYGRAPHS/$date/madlist.txt
+fi
+
 
 #it s an escrow involving 2transactions which are going to the same multisig address so if multisig1(buyer tx to the multisig1)=multisig2(seller tx to the multisig2) in this txid multisig2 != multisig3, this line should optimize the script
 multisigcount=$(($multisigcount + 1))
@@ -345,7 +366,7 @@ fi
 if [[ "$timebasedcounter" -eq 0 ]] ; then
 mkdir ../CountMADescrow/MYGRAPHS 2>/dev/null
 mkdir ../CountMADescrow/MYGRAPHS/$date 2>/dev/null
-echo -e "${flblue} TIME BASED STATS (Available from 08-11-19 (block 506469) to 05-01-20 (block 682896)${neutre}" > ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
+echo -e "${flblue} TIME BASED STATS (Available from 08-11-19 (block 506469) to 05-01-20 (block 682896)${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
 echo "" >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
 echo -e "${red}GRAPH: EVERY MONTH (time based) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
 echo ""   >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
