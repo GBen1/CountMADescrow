@@ -204,7 +204,7 @@ rawtx=$(./particl-cli getrawtransaction $txid)
 
 #how much multisig address in this txid ?, a multisig address begins by R (grep -E ^R) and a madescrow is made using Confidential transaction (grep blind), moreover a script is involved (grep scripthash)
 nbmultisig=$(cat ../CountMADescrow/lasttxidsearch.txt | grep -A 10 blind | grep -A 4 scripthash | cut -c12- | grep -E ^R | sed 's/"//' | wc -l)
-#Could eventually be better than the previous line (by being more specific about the kind of script involved): nbmultisig=$(cat ../CountMADescrow/lasttxidsearch.txt | grep -A 10 blind | grep -A 7 OP_HASH160 | grep -A 7 OP_EQUAL | grep -A 7 a914 | grep -A 7 87 | grep -A 4 scripthash | cut -c12- | grep -E ^R | sed 's/"//'| wc -l)
+#Could eventually be better than the previous line (by being more specific about the kind of script involved = P2SH): nbmultisig=$(cat ../CountMADescrow/lasttxidsearch.txt | grep -A 10 blind | grep -A 7 OP_HASH160 | grep -A 7 OP_EQUAL | grep -A 7 a914 | grep -A 7 87 | grep -A 4 scripthash | cut -c12- | grep -E ^R | sed 's/"//'| wc -l)
 
 multisigcount=0
 #A raw tx decoded show exactly 2 occurences of the same multisig address when there is a madescrow so let s check all the multisig address of this txid to know if they are identical
@@ -220,8 +220,8 @@ line2=$(echo "$line1" | cut -d "." -f 1 | cut -d "," -f 1)
 
 multisig1=$(cat ../CountMADescrow/lasttxidsearch.txt | grep -A 10 blind |  grep -A 4 scripthash | cut -c12- | grep -E ^R | sed 's/"//' | sed -n "$line1 p")
 multisig2=$(cat ../CountMADescrow/lasttxidsearch.txt | grep -A 10 blind |  grep -A 4 scripthash | cut -c12- | grep -E ^R | sed 's/"//' | sed -n "$line2 p")
-#Could eventually be better than the previous lines (by being more specific about the kind of script involved): multisig1=$(cat ../CountMADescrow/lasttxidsearch.txt  | grep -A 10 blind | grep -A 7 OP_HASH160 | grep -A 7 OP_EQUAL | grep -A 7 a914 | grep -A 7 87 | grep -A 4 scripthash | cut -c12- | grep -E ^R | sed 's/"//'| sed -n "$line1 p")
-#Could eventually be better than the previous lines (by being more specific about the kind of script involved): multisig2=$(cat ../CountMADescrow/lasttxidsearch.txt  | grep -A 10 blind | grep -A 7 OP_HASH160 | grep -A 7 OP_EQUAL | grep -A 7 a914 | grep -A 7 87 | grep -A 4 scripthash | cut -c12- | grep -E ^R | sed 's/"//'| sed -n "$line2 p")
+#Could eventually be better than the previous lines (by being more specific about the kind of script involved = P2SH): multisig1=$(cat ../CountMADescrow/lasttxidsearch.txt  | grep -A 10 blind | grep -A 7 OP_HASH160 | grep -A 7 OP_EQUAL | grep -A 7 a914 | grep -A 7 87 | grep -A 4 scripthash | cut -c12- | grep -E ^R | sed 's/"//'| sed -n "$line1 p")
+#Could eventually be better than the previous lines (by being more specific about the kind of script involved = P2SH): multisig2=$(cat ../CountMADescrow/lasttxidsearch.txt  | grep -A 10 blind | grep -A 7 OP_HASH160 | grep -A 7 OP_EQUAL | grep -A 7 a914 | grep -A 7 87 | grep -A 4 scripthash | cut -c12- | grep -E ^R | sed 's/"//'| sed -n "$line2 p")
 
 if [[ "$multisig1" = "$multisig2"  ]] ; then
 
