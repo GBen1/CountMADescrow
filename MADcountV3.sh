@@ -162,7 +162,7 @@ echo "read -p \"\$(echo -e \"\e[1;36mPress [Enter] key to continue...\e[0;m\")\"
 echo "clear" >> ../CountMADescrow/displaylaststats.sh
 echo "echo -e \"\e[1;44mMADESCROWS FOUND\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
-echo "cat MYGRAPHS/$date/madlist.txt" >> ../CountMADescrow/displaylaststats.sh
+echo "cat MYGRAPHS/$date/madlist.txt 2>/dev/null" >> ../CountMADescrow/displaylaststats.sh
 
 
 
