@@ -345,7 +345,7 @@ fi
 if [[ "$timebasedcounter" -eq 0 ]] ; then
 mkdir ../CountMADescrow/MYGRAPHS 2>/dev/null
 mkdir ../CountMADescrow/MYGRAPHS/$date 2>/dev/null
-echo -e "${flblue} TIME BASED STATS (Available from 08-11-19 (block 506469) to 05-01-20 (block 682896)${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
+echo -e "${flblue} TIME BASED STATS (Available from 08-11-19 (block 506469) to 05-01-20 (block 682896)${neutre}" > ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
 echo "" >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
 echo -e "${red}GRAPH: EVERY MONTH (time based) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
 echo ""   >> ../CountMADescrow/MYGRAPHS/$date/timebasedgraph.txt
