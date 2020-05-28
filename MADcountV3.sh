@@ -223,7 +223,7 @@ multisig2=$(cat ../CountMADescrow/lasttxidsearch.txt | grep -A 10 blind |  grep 
 
 if [[ "$multisig1" = "$multisig2"  ]] ; then
 
-#increase mthe adtxid counter for each madescrow in this txid
+#increase the madtxid counter for each madescrow in this txid
 madtxid=$(printf '%.3f\n' "$(echo "$madtxid" "+" "1" | bc -l )")
 madtxid=$(echo "$madtxid" | cut -d "." -f 1 | cut -d "," -f 1)
 
