@@ -380,3 +380,5 @@ fi
 
 currentblock=$(($currentblock + 1)) 
 done
+
+bash displaylaststats.sh
