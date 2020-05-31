@@ -138,7 +138,7 @@ yeargraph=$beginning
 #create displaylaststats.sh
 echo "clear" > ../CountMADescrow/displaylaststats.sh
 echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/madlist.txt ] && numadlist=\$(cat MYGRAPHS/$date/madlist.txt 2>/dev/null | wc -l)" >> ../CountMADescrow/displaylaststats.sh
-echo "echo -e \"\e[1;44mTIME BASED STATS (Available from 08-11-19 (block 506469) to 05-01-20 (block 682896)\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
+echo "echo -e \"\e[1;44mTIME BASED STATS (Available from 08-11-19 (block 506469) to 06-01-20 (block 703700)\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
 echo "echo -e \"\e[1;31mGRAPH: EVERY MONTH (time based)\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
