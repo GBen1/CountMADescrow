@@ -381,4 +381,4 @@ fi
 currentblock=$(($currentblock + 1)) 
 done
 
-bash displaylaststats.sh
+bash displaylaststats.sh 2>/dev/null
