@@ -344,7 +344,7 @@ fi
 #TIME BASED GRAPH
 
 
-if [[ "$currentblock" -eq 520062 ]] || [[ "$currentblock" -eq 540170 ]] || [[ "$currentblock" -eq 560954 ]] || [[ "$currentblock" -eq  581066 ]] || [[ "$currentblock" -eq 601840 ]] || [[ "$currentblock" -eq 622585 ]] || [[ "$currentblock" -eq 642016 ]] || [[ "$currentblock" -eq 662773 ]] || [[ "$currentblock" -eq 682896 ]]; then
+if [[ "$currentblock" -eq 520062 ]] || [[ "$currentblock" -eq 540170 ]] || [[ "$currentblock" -eq 560954 ]] || [[ "$currentblock" -eq  581066 ]] || [[ "$currentblock" -eq 601840 ]] || [[ "$currentblock" -eq 622585 ]] || [[ "$currentblock" -eq 642016 ]] || [[ "$currentblock" -eq 662773 ]] || [[ "$currentblock" -eq 682896 ]] || [[ "$currentblock" -eq 703700 ]]; then
 if [[ "$currentblock" -eq 520062 ]]; then
 themonth=$(echo "August 2019")
 elif [[ "$currentblock" -eq 540170 ]]; then
@@ -363,6 +363,8 @@ elif [[ "$currentblock" -eq 662773 ]]; then
 themonth=$(echo "March 2020")
 elif [[ "$currentblock" -eq 682896 ]]; then
 themonth=$(echo "April 2020")
+elif [[ "$currentblock" -eq 703700 ]]; then
+themonth=$(echo "May 2020")
 fi
 
 if [[ "$timebasedcounter" -eq 0 ]] ; then
