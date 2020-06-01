@@ -31,6 +31,8 @@
 
 >If you let `bash MADcountV3.sh` running until the end of the script and if there are at least 13000 blocks between the first and the last madescrow found you will be able to see the reliability index of your last search in entering `bash displaylaststats.sh`. 
 
+![Screenshot](index.png)
+
 ***
 
 ## Download
