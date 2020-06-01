@@ -19,7 +19,7 @@
 
 ***
 
-![Screenshot](index.png)
+![Screenshot](reliability.png)
 
 **The Reliability Index: Among the real madescrows created on the marketplace how much are corresponding with real sales and how much are fakes/tests ?**
 
