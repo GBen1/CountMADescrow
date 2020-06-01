@@ -136,7 +136,7 @@ while ((latestblock <= currentblock))
 do
 clear
 #It s not useful t start counting before the block 506469 for the reasons explained below
-echo -e "${yel}The first Private MADescrow has been created during the block 506469 and we are at the block $highestblock ${neutre}"
+echo -e "${yel}You are going to start counting the Private MADescrows from the block $currentblock and we are at the block $highestblock ${neutre}"
 echo -e "${yel}To which block do you want to count the Private MADescrow creations ?${neutre}${gr}]$currentblock;$highestblock]${neutre}" && read latestblock
 currentblock=$(echo $currentblock | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA-Z]| sed -n '/^[[:digit:]]*$/p' )
 beginning=$(echo $currentblock | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA-Z]| sed -n '/^[[:digit:]]*$/p' )
