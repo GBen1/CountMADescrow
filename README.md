@@ -21,8 +21,6 @@
 
 **The Reliability Index: Among the real madescrows created on the marketplace how much are corresponding with real sales and how much are fakes/tests ?**
 
-![Screenshot](reliability.png)
-
  - Due to the very low fees on this platform it could be enough cheap to make fakes/tests madescrows on the particl marketplace (in buying your own listing for example) which could impact negatively the reliability of this script. 
  
  - The reliability index is calculated by using an algorithm based on the deviation from the statistical norm to show you the probability for each real madescrow found to be a real sale.
@@ -30,6 +28,8 @@
 - To get a more accurate result it s advised to multiply the final result (number of madescrow found) by the reliability index.
 
 - You can verify manually this index by checking on a block explorer for each madescrow found the block number of the madescrow creation and the block number of the madescrow release: if there are very few blocks between these transactions it s probably a fake/test madescrow.
+
+![Screenshot](reliability.png)
 
 >If you let `bash MADcountV3.sh` running until the end of the script and if there are at least 13000 blocks between the first and the last madescrow found you will be able to see the reliability index of your last search in entering `bash displaylaststats.sh`. 
 
