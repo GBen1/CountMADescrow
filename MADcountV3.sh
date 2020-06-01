@@ -406,6 +406,7 @@ clear
 echo -e "\e[1;36mRELIABILITY INDEX CALCULATION, PLEASE WAIT...\e[0;m"
 x=3
 else
+clear
 echo -e "\e[1;36mEnter \"bash displaylaststats.sh\" to display the results of your last search\e[0;m"
 exit
 fi
