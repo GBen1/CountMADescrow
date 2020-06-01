@@ -114,6 +114,8 @@ fi
 #delete this file to not keep the informations of the latest txid scanned if this script has already been launched and stoped before the end of the loop
 rm ../CountMADescrow/lasttxidsearch.txt 2>/dev/null
 
+date=$(date | sed 's/ //' |  sed 's/ //'  |  sed 's/ //'  |  sed 's/ //'  |  sed 's/ //' | sed 's/ //' )
+
 #what is the highest block synchronized on this node ?
 latestblock=$(./particl-cli getblockcount) 
 
@@ -129,7 +131,7 @@ beginning=$(echo $currentblock | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA
 done
 
 #These lines are going to be useful is you want to make your own graph:
-date=$(date | sed 's/ //' |  sed 's/ //'  |  sed 's/ //'  |  sed 's/ //'  |  sed 's/ //')
+
 weeklygraph=$beginning
 monthlygraph=$beginning
 quartergraph=$beginning
@@ -138,7 +140,7 @@ yeargraph=$beginning
 #create displaylaststats.sh
 echo "clear" > ../CountMADescrow/displaylaststats.sh
 echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/madlist.txt ] && numadlist=\$(cat MYGRAPHS/$date/madlist.txt 2>/dev/null | wc -l)" >> ../CountMADescrow/displaylaststats.sh
-echo "echo -e \"\e[1;44mTIME BASED STATS (Available from 08-11-19 (block 506469) to 05-01-20 (block 682896)\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
+echo "echo -e \"\e[1;44mTIME BASED STATS (Available from 08-11-19 (block 506469) to 06-01-20 (block 703701)\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
 echo "echo -e \"\e[1;31mGRAPH: EVERY MONTH (time based)\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
@@ -344,7 +346,7 @@ fi
 #TIME BASED GRAPH
 
 
-if [[ "$currentblock" -eq 520062 ]] || [[ "$currentblock" -eq 540170 ]] || [[ "$currentblock" -eq 560954 ]] || [[ "$currentblock" -eq  581066 ]] || [[ "$currentblock" -eq 601840 ]] || [[ "$currentblock" -eq 622585 ]] || [[ "$currentblock" -eq 642016 ]] || [[ "$currentblock" -eq 662773 ]] || [[ "$currentblock" -eq 682896 ]]; then
+if [[ "$currentblock" -eq 520062 ]] || [[ "$currentblock" -eq 540170 ]] || [[ "$currentblock" -eq 560954 ]] || [[ "$currentblock" -eq  581066 ]] || [[ "$currentblock" -eq 601840 ]] || [[ "$currentblock" -eq 622585 ]] || [[ "$currentblock" -eq 642016 ]] || [[ "$currentblock" -eq 662773 ]] || [[ "$currentblock" -eq 682896 ]] || [[ "$currentblock" -eq 703701 ]]; then
 if [[ "$currentblock" -eq 520062 ]]; then
 themonth=$(echo "August 2019")
 elif [[ "$currentblock" -eq 540170 ]]; then
@@ -363,6 +365,8 @@ elif [[ "$currentblock" -eq 662773 ]]; then
 themonth=$(echo "March 2020")
 elif [[ "$currentblock" -eq 682896 ]]; then
 themonth=$(echo "April 2020")
+elif [[ "$currentblock" -eq 703701 ]]; then
+themonth=$(echo "April 2020")
 fi
 
 if [[ "$timebasedcounter" -eq 0 ]] ; then
@@ -380,3 +384,5 @@ fi
 
 currentblock=$(($currentblock + 1)) 
 done
+
+bash displaylaststats.sh 2>/dev/null
