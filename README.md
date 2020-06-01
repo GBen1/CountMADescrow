@@ -39,7 +39,7 @@
 
 `cd && git clone https://github.com/GBen1/CountMADescrow.git`
 
-## Start the counter from block X to the latest one (X > 506468)
+## Start the counter from block X to the block Y  (506469 <= X < Y <= Highest Block)
 
 `bash MADcountV3.sh`
 
