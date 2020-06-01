@@ -389,7 +389,7 @@ done
 
 #create a reliability index to calculate the % of real sales among the real madescrows found
 clear
-echo -e \"\e[1;36mRELIABILITY INDEX CALCULATION, PLEASE WAIT...\e[0;m\"
+echo -e "\e[1;36mRELIABILITY INDEX CALCULATION, PLEASE WAIT...\e[0;m"
 
 firstblock=$(cat -A ../CountMADescrow/MYGRAPHS/$date/madlist.txt | cut -c29- | rev | sed 's/.* //' | rev | sed -n "1p")
 lastblock=$(cat -A ../CountMADescrow/MYGRAPHS/$date/madlist.txt | cut -c29- | rev | sed 's/.* //' | rev | tac | sed -n "1p")
@@ -465,6 +465,6 @@ fake=$(printf '%.3f\n' "$(echo "100" "-" "$fake" | bc -l )")
 
 echo "RELIABILITY INDEX = $fake %" > ../CountMADescrow/MYGRAPHS/$date/reliabilityindex.txt
 clear
-echo -e \"\e[1;36mEnter "bash displaylaststats.sh" to display the results of your last search\e[0;m\"
+echo -e "\e[1;36mEnter "bash displaylaststats.sh" to display the results of your last search\e[0;m"
 
 bash displaylaststats.sh 2>/dev/null
