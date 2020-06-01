@@ -397,11 +397,11 @@ nblockscanned=$(printf '%.3f\n' "$(echo "$lastblock" "-" "$firstblock" "+" "1" |
 nblockscanned=$(echo "$nblockscanned" | cut -d "." -f 1 | cut -d "," -f 1)
 blockfound=$(cat ../CountMADescrow/MYGRAPHS/$date/madlist.txt 2>/dev/null | wc -l)
 
-if [[ "$nblockscanned" -gt "22500" ]] ; then 
+if [[ "$nblockscanned" -gt "23000" ]] ; then 
 clear
 echo -e "\e[1;36mRELIABILITY INDEX CALCULATION, PLEASE WAIT...\e[0;m"
 x=4
-elif [[ "$nblockscanned" -gt "15000" ]] ; then 
+elif [[ "$nblockscanned" -gt "13000" ]] ; then 
 clear
 echo -e "\e[1;36mRELIABILITY INDEX CALCULATION, PLEASE WAIT...\e[0;m"
 x=3
