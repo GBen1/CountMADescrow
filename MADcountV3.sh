@@ -138,7 +138,7 @@ yeargraph=$beginning
 #create displaylaststats.sh
 echo "clear" > ../CountMADescrow/displaylaststats.sh
 echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/madlist.txt ] && numadlist=\$(cat MYGRAPHS/$date/madlist.txt 2>/dev/null | wc -l)" >> ../CountMADescrow/displaylaststats.sh
-echo "echo -e \"\e[1;44mTIME BASED STATS (Available from 08-11-19 (block 506469) to 06-01-20 (block 703700)\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
+echo "echo -e \"\e[1;44mTIME BASED STATS (Available from 08-11-19 (block 506469) to 06-01-20 (block 703701)\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
 echo "echo -e \"\e[1;31mGRAPH: EVERY MONTH (time based)\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
@@ -344,7 +344,7 @@ fi
 #TIME BASED GRAPH
 
 
-if [[ "$currentblock" -eq 520062 ]] || [[ "$currentblock" -eq 540170 ]] || [[ "$currentblock" -eq 560954 ]] || [[ "$currentblock" -eq  581066 ]] || [[ "$currentblock" -eq 601840 ]] || [[ "$currentblock" -eq 622585 ]] || [[ "$currentblock" -eq 642016 ]] || [[ "$currentblock" -eq 662773 ]] || [[ "$currentblock" -eq 682896 ]] || [[ "$currentblock" -eq 703700 ]]; then
+if [[ "$currentblock" -eq 520062 ]] || [[ "$currentblock" -eq 540170 ]] || [[ "$currentblock" -eq 560954 ]] || [[ "$currentblock" -eq  581066 ]] || [[ "$currentblock" -eq 601840 ]] || [[ "$currentblock" -eq 622585 ]] || [[ "$currentblock" -eq 642016 ]] || [[ "$currentblock" -eq 662773 ]] || [[ "$currentblock" -eq 682896 ]] || [[ "$currentblock" -eq 703701 ]]; then
 if [[ "$currentblock" -eq 520062 ]]; then
 themonth=$(echo "August 2019")
 elif [[ "$currentblock" -eq 540170 ]]; then
@@ -363,7 +363,7 @@ elif [[ "$currentblock" -eq 662773 ]]; then
 themonth=$(echo "March 2020")
 elif [[ "$currentblock" -eq 682896 ]]; then
 themonth=$(echo "April 2020")
-elif [[ "$currentblock" -eq 703700 ]]; then
+elif [[ "$currentblock" -eq 703701 ]]; then
 themonth=$(echo "May 2020")
 fi
 
