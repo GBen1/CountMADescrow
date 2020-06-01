@@ -388,8 +388,7 @@ currentblock=$(($currentblock + 1))
 done
 
 #create a reliability index to calculate the % of real sales among the real madescrows found
-clear
-echo -e "\e[1;36mRELIABILITY INDEX CALCULATION, PLEASE WAIT...\e[0;m"
+
 
 firstblock=$(cat -A ../CountMADescrow/MYGRAPHS/$date/madlist.txt | cut -c29- | rev | sed 's/.* //' | rev | sed -n "1p")
 lastblock=$(cat -A ../CountMADescrow/MYGRAPHS/$date/madlist.txt | cut -c29- | rev | sed 's/.* //' | rev | tac | sed -n "1p")
@@ -399,9 +398,16 @@ nblockscanned=$(echo "$nblockscanned" | cut -d "." -f 1 | cut -d "," -f 1)
 blockfound=$(cat ../CountMADescrow/MYGRAPHS/$date/madlist.txt 2>/dev/null | wc -l)
 
 if [[ "$nblockscanned" -gt "22500" ]] ; then 
+clear
+echo -e "\e[1;36mRELIABILITY INDEX CALCULATION, PLEASE WAIT...\e[0;m"
 x=4
-else
+if [[ "$nblockscanned" -gt "15000" ]] ; then 
+clear
+echo -e "\e[1;36mRELIABILITY INDEX CALCULATION, PLEASE WAIT...\e[0;m"
 x=3
+else
+echo -e "\e[1;36mEnter \"bash displaylaststats.sh\" to display the results of your last search\e[0;m"
+exit
 fi
 
 average=$(printf '%.3f\n' "$(echo "$blockfound" "*" "700" | bc -l )")
