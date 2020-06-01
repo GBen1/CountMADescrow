@@ -481,6 +481,7 @@ done
 fake=$(printf '%.3f\n' "$(echo "$fake" "*" "100" | bc -l )")
 fake=$(printf '%.3f\n' "$(echo "$fake" "/" "$blockfound" | bc -l )")
 fake=$(printf '%.3f\n' "$(echo "100" "-" "$fake" | bc -l )")
+fake=$(echo "$fake" | cut -d "." -f 1 | cut -d "," -f 1)
 
 echo "RELIABILITY INDEX = $fake %" > ../CountMADescrow/MYGRAPHS/$date/reliabilityindex.txt
 clear
