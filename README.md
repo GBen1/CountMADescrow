@@ -29,7 +29,7 @@
 
 - You can verify manually this index by checking on a block explorer for each madescrow found the block number of the madescrow creation and the block number of the madescrow release: if there are very few blocks between these transactions it s probably a fake/test madescrow.
 
->If you let `bash MADcountV3.sh` running until the end of the script and if there are at least 13000 blocks between the first and the last found you will be able to see the reliability index of your last search in entering `bash displaylaststats.sh`. 
+>If you let `bash MADcountV3.sh` running until the end of the script and if there are at least 13000 blocks between the first and the last madescrow found you will be able to see the reliability index of your last search in entering `bash displaylaststats.sh`. 
 
 ***
 
