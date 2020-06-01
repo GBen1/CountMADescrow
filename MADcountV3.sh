@@ -465,6 +465,6 @@ fake=$(printf '%.3f\n' "$(echo "100" "-" "$fake" | bc -l )")
 
 echo "RELIABILITY INDEX = $fake %" > ../CountMADescrow/MYGRAPHS/$date/reliabilityindex.txt
 clear
-echo -e "\e[1;36mEnter "bash displaylaststats.sh" to display the results of your last search\e[0;m"
+echo -e "\e[1;36mEnter \"bash displaylaststats.sh\" to display the results of your last search\e[0;m"
 
 bash displaylaststats.sh 2>/dev/null
