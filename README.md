@@ -21,7 +21,7 @@
 
 **Among the real madescrows created on the marketplace how much are corresponding with real sales and how much are fakes/tests ?**
 
->If you let `bash MADcountV3.sh` running until the end of the script and if there are at least 15000 blocks between the first and the last found you will be able to see the reliability index of your last search in entering `bash displaylaststats.sh`. The reliability index is calculated by using an algorithm based on the deviation from the statistical norm to show you the probability for each madescrow found to be a real sale .
+>If you let `bash MADcountV3.sh` running until the end of the script and if there are at least 13000 blocks between the first and the last found you will be able to see the reliability index of your last search in entering `bash displaylaststats.sh`. The reliability index is calculated by using an algorithm based on the deviation from the statistical norm to show you the probability for each madescrow found to be a real sale .
 
 ***
 
