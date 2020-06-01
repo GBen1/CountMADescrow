@@ -118,14 +118,26 @@ date=$(date | sed 's/ //' |  sed 's/ //'  |  sed 's/ //'  |  sed 's/ //'  |  sed
 
 #what is the highest block synchronized on this node ?
 latestblock=$(./particl-cli getblockcount) 
+highestblock=$(./particl-cli getblockcount)
 
 currentblock=0
-while ((currentblock < 506469)) || ((latestblock < currentblock))
+while ((currentblock < 506469)) || ((latestblock <= currentblock))
 do
 clear
 #It s not useful t start counting before the block 506469 for the reasons explained below
 echo -e "${yel}The first Private MADescrow has been created during the block 506469 and we are at the block $latestblock ${neutre}"
-echo -e "${yel}From which block do you want to count the Private MADescrow creations ?${neutre}${gr}[506469;$latestblock]${neutre}" && read currentblock
+echo -e "${yel}From which block do you want to count the Private MADescrow creations ?${neutre}${gr}[506469;$latestblock[${neutre}" && read currentblock
+currentblock=$(echo $currentblock | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA-Z]| sed -n '/^[[:digit:]]*$/p' )
+beginning=$(echo $currentblock | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA-Z]| sed -n '/^[[:digit:]]*$/p' )
+done
+
+latestblock=0
+while ((latestblock <= currentblock))
+do
+clear
+#It s not useful t start counting before the block 506469 for the reasons explained below
+echo -e "${yel}The first Private MADescrow has been created during the block 506469 and we are at the block $highestblock ${neutre}"
+echo -e "${yel}To which block do you want to count the Private MADescrow creations ?${neutre}${gr}]$currentblock;$highestblock]${neutre}" && read latestblock
 currentblock=$(echo $currentblock | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA-Z]| sed -n '/^[[:digit:]]*$/p' )
 beginning=$(echo $currentblock | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA-Z]| sed -n '/^[[:digit:]]*$/p' )
 done
