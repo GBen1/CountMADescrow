@@ -401,7 +401,7 @@ if [[ "$nblockscanned" -gt "22500" ]] ; then
 clear
 echo -e "\e[1;36mRELIABILITY INDEX CALCULATION, PLEASE WAIT...\e[0;m"
 x=4
-if [[ "$nblockscanned" -gt "15000" ]] ; then 
+elif [[ "$nblockscanned" -gt "15000" ]] ; then 
 clear
 echo -e "\e[1;36mRELIABILITY INDEX CALCULATION, PLEASE WAIT...\e[0;m"
 x=3
