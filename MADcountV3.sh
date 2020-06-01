@@ -366,7 +366,7 @@ themonth=$(echo "March 2020")
 elif [[ "$currentblock" -eq 682896 ]]; then
 themonth=$(echo "April 2020")
 elif [[ "$currentblock" -eq 703701 ]]; then
-themonth=$(echo "April 2020")
+themonth=$(echo "May 2020")
 fi
 
 if [[ "$timebasedcounter" -eq 0 ]] ; then
