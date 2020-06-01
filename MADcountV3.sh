@@ -140,6 +140,7 @@ yeargraph=$beginning
 #create displaylaststats.sh
 echo "clear" > ../CountMADescrow/displaylaststats.sh
 echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/madlist.txt ] && numadlist=\$(cat MYGRAPHS/$date/madlist.txt 2>/dev/null | wc -l)" >> ../CountMADescrow/displaylaststats.sh
+echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/reliabilityindex.txt ] && index=\$(cat MYGRAPHS/$date/reliabilityindex.txt 2>/dev/null)" >> ../CountMADescrow/displaylaststats.sh
 echo "echo -e \"\e[1;44mTIME BASED STATS (Available from 08-11-19 (block 506469) to 06-01-20 (block 703701))\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
 echo "echo -e \"\e[1;31mGRAPH: EVERY MONTH (time based)\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
@@ -161,6 +162,7 @@ echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
 echo "read -p \"\$(echo -e \"\e[1;36mPress [Enter] key to continue...\e[0;m\")\"" >> ../CountMADescrow/displaylaststats.sh
 echo "clear" >> ../CountMADescrow/displaylaststats.sh
 echo "echo -e \"\e[1;44m\$numadlist MADESCROWS FOUND\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
+echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/reliabilityindex.txt ] && echo -e \"\e[1;44m\$index\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
 echo "cat MYGRAPHS/$date/madlist.txt 2>/dev/null" >> ../CountMADescrow/displaylaststats.sh
 
@@ -384,5 +386,85 @@ fi
 
 currentblock=$(($currentblock + 1)) 
 done
+
+#create a reliability index to calculate the % of real sales among the real madescrows found
+clear
+echo -e \"\e[1;36mRELIABILITY INDEX CALCULATION, PLEASE WAIT...\e[0;m\"
+
+firstblock=$(cat -A ../CountMADescrow/MYGRAPHS/$date/madlist.txt | cut -c29- | rev | sed 's/.* //' | rev | sed -n "1p")
+lastblock=$(cat -A ../CountMADescrow/MYGRAPHS/$date/madlist.txt | cut -c29- | rev | sed 's/.* //' | rev | tac | sed -n "1p")
+
+nblockscanned=$(printf '%.3f\n' "$(echo "$lastblock" "-" "$firstblock" "+" "1" | bc -l )")
+nblockscanned=$(echo "$nblockscanned" | cut -d "." -f 1 | cut -d "," -f 1)
+blockfound=$(cat ../CountMADescrow/MYGRAPHS/$date/madlist.txt 2>/dev/null | wc -l)
+
+if [[ "$nblockscanned" -gt "22500" ]] ; then 
+x=4
+else
+x=3
+fi
+
+average=$(printf '%.3f\n' "$(echo "$blockfound" "*" "700" | bc -l )")
+average=$(printf '%.3f\n' "$(echo "$average" "/" "$nblockscanned" | bc -l )")
+average=$(printf '%.3f\n' "$(echo "$average" "*" "1000" | bc -l )")
+average=$(echo "$average" | cut -d "." -f 1 | cut -d "," -f 1)
+
+# mensual: 3 global: 4
+thaverage=$(printf '%.3f\n' "$(echo "$average" "*" "$x" | bc -l )")
+thaverage=$(echo "$thaverage" | cut -d "." -f 1 | cut -d "," -f 1)
+
+
+line1=1
+line2=2
+refblock1=$(cat -A ../CountMADescrow/MYGRAPHS/$date/madlist.txt | cut -c29-  |  rev | sed 's/.* //' | rev | sed -n "$line1 p")
+refblock2=$(cat -A ../CountMADescrow/MYGRAPHS/$date/madlist.txt | cut -c29-  |  rev | sed 's/.* //' | rev | sed -n "$line2 p")
+checkrefblock2=$(echo "$refblock2" | wc -c)
+checkrefblock1=$(echo "$refblock1" | wc -c)
+
+
+
+fake=0
+while [ "$checkrefblock2" -gt "2" ]
+do
+z=0
+
+
+refblock1=$(cat -A ../CountMADescrow/MYGRAPHS/$date/madlist.txt | cut -c29-  |  rev | sed 's/.* //' | rev | sed -n "$line1 p")
+
+var=$(printf '%.3f\n' "$(echo "$refblock1" "+" "700" | bc -l )")
+var=$(echo "$var" | cut -d "." -f 1 | cut -d "," -f 1)
+
+while (( refblock2 < var)) &&  (( checkrefblock2  >  2))
+do
+z=$(($z + 1000))
+line2=$(($line2 + 1))
+refblock2=$(cat -A ../CountMADescrow/MYGRAPHS/$date/madlist.txt | cut -c29-  |  rev | sed 's/.* //' | rev | sed -n "$line2 p")
+checkrefblock2=$(echo "$refblock2" | wc -c)
+done
+
+line1=$(($line1 + 1))
+
+
+if [[ "$z" -gt "$thaverage" ]] ; then
+
+z=$(printf '%.3f\n' "$(echo "$z" "/" "1000" | bc -l )")
+fake=$(printf '%.3f\n' "$(echo "$fake" "+" "$z" | bc -l )")
+fake=$(echo "$fake" | cut -d "." -f 1 | cut -d "," -f 1)
+
+fi
+
+
+refblock1=$(cat -A ../CountMADescrow/MYGRAPHS/$date/madlist.txt | cut -c29-  |  rev | sed 's/.* //' | rev | sed -n "$line1 p")
+checkrefblock2=$(echo "$refblock2" | wc -c)
+done
+
+
+fake=$(printf '%.3f\n' "$(echo "$fake" "*" "100" | bc -l )")
+fake=$(printf '%.3f\n' "$(echo "$fake" "/" "$blockfound" | bc -l )")
+fake=$(printf '%.3f\n' "$(echo "100" "-" "$fake" | bc -l )")
+
+echo "RELIABILITY INDEX = $fake %" > ../CountMADescrow/MYGRAPHS/$date/reliabilityindex.txt
+clear
+echo -e \"\e[1;36mEnter "bash displaylaststats.sh" to display the results of your last search\e[0;m\"
 
 bash displaylaststats.sh 2>/dev/null
