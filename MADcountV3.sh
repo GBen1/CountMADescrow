@@ -117,6 +117,8 @@ rm ../CountMADescrow/lasttxidsearch.txt 2>/dev/null
 #what is the highest block synchronized on this node ?
 latestblock=$(./particl-cli getblockcount) 
 
+date=$(date | sed 's/ //' |  sed 's/ //'  |  sed 's/ //'  |  sed 's/ //'  |  sed 's/ //')
+
 currentblock=0
 while ((currentblock < 506469)) || ((latestblock < currentblock))
 do
@@ -129,7 +131,6 @@ beginning=$(echo $currentblock | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA
 done
 
 #These lines are going to be useful is you want to make your own graph:
-date=$(date | sed 's/ //' |  sed 's/ //'  |  sed 's/ //'  |  sed 's/ //'  |  sed 's/ //')
 weeklygraph=$beginning
 monthlygraph=$beginning
 quartergraph=$beginning
