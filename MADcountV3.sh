@@ -153,6 +153,7 @@ yeargraph=$beginning
 echo "clear" > ../CountMADescrow/displaylaststats.sh
 echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/madlist.txt ] && numadlist=\$(cat MYGRAPHS/$date/madlist.txt 2>/dev/null | wc -l)" >> ../CountMADescrow/displaylaststats.sh
 echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/reliabilityindex.txt ] && index=\$(cat MYGRAPHS/$date/reliabilityindex.txt 2>/dev/null)" >> ../CountMADescrow/displaylaststats.sh
+echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/fakelist.txt ] && fakelist=\$(cat MYGRAPHS/$date/fakelist.txt 2>/dev/null)" >> ../CountMADescrow/displaylaststats.sh
 echo "echo -e \"\e[1;44mTIME BASED STATS (Available from 08-11-19 (block 506469) to 06-01-20 (block 703701))\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
 echo "echo -e \"\e[1;31mGRAPH: EVERY MONTH (time based)\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
@@ -175,6 +176,7 @@ echo "read -p \"\$(echo -e \"\e[1;36mPress [Enter] key to continue...\e[0;m\")\"
 echo "clear" >> ../CountMADescrow/displaylaststats.sh
 echo "echo -e \"\e[1;44m\$numadlist MADESCROWS FOUND\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/reliabilityindex.txt ] && echo -e \"\e[1;44m\$index\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
+echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/fakelist.txt ] && echo -e \"\e[1;41m\$fakelist FAKE MADESCROWS FOUND\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
 echo "cat MYGRAPHS/$date/madlist.txt 2>/dev/null" >> ../CountMADescrow/displaylaststats.sh
 
@@ -183,6 +185,7 @@ echo "cat MYGRAPHS/$date/madlist.txt 2>/dev/null" >> ../CountMADescrow/displayla
 
 #initialize the counters
 madtot=0
+isfake=0
 madlist=0
 timebasedcounter=0
 #for each block do...
@@ -245,6 +248,35 @@ if [[ "$multisig1" = "$multisig2"  ]] ; then
 madtxid=$(printf '%.3f\n' "$(echo "$madtxid" "+" "1" | bc -l )")
 madtxid=$(echo "$madtxid" | cut -d "." -f 1 | cut -d "," -f 1)
 
+#LET S VERIFY IF THE REAL MADESCROW IS A FAKE SALE:
+getmadtx=$($curl_cmd https://explorer.particl.io/particl-insight-api/addr/$multisig1 2>/dev/null | jq -r .transactions)
+#get madescrow creation tx
+tx1=$(echo $getmadtx | sed 's/ //' | sed 's/ //' | sed 's/ //' | sed 's/"//' | sed 's/"//' | sed 's/"//' | sed 's/"//' | cut -c2- | rev | cut -c2- | rev | sed 's/.*,//')
+#get madescrow release tx
+tx2=$(echo $getmadtx | sed 's/ //' | sed 's/ //' | sed 's/ //' | sed 's/"//' | sed 's/"//' | sed 's/"//' | sed 's/"//' | cut -c2- | rev | cut -c2- | sed 's/.*,//' | rev)
+
+#get blockheight of madescrow creation
+getblockmadtx1=$($curl_cmd https://explorer.particl.io/particl-insight-api/tx/$tx1 2>/dev/null | jq -r .blockheight)
+#get blockheight of madescrow release
+getblockmadtx2=$($curl_cmd https://explorer.particl.io/particl-insight-api/tx/$tx2 2>/dev/null | jq -r .blockheight)
+
+
+difftx=$(printf '%.3f\n' "$(echo "$tx2" "-" "$tx1" | bc -l )")
+difftx=$(echo "$diff" | cut -d "." -f 1 | cut -d "," -f 1)
+
+if [[ "$difftx" -lt 30 ]] ; then
+
+if [[ "$madlist" -eq 0 ]] ; then
+mkdir ../CountMADescrow/MYGRAPHS 2>/dev/null
+mkdir ../CountMADescrow/MYGRAPHS/$date 2>/dev/null
+echo -e "${gr}BLOCK ${neutre}${yel}$currentblock ${neutre}${gr}: $multisig1${neutre} ${red}(FAKE)${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/madlist.txt
+isfake=$(($isfake + 1))
+madlist=$(($madlist + 1)) 
+else
+echo -e "${gr}BLOCK ${neutre}${yel}$currentblock ${neutre}${gr}: $multisig1${neutre} ${red}(FAKE)${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/madlist.txt
+fi
+
+else
 
 if [[ "$madlist" -eq 0 ]] ; then
 mkdir ../CountMADescrow/MYGRAPHS 2>/dev/null
@@ -254,6 +286,10 @@ madlist=$(($madlist + 1))
 else
 echo -e "${gr}BLOCK ${neutre}${yel}$currentblock ${neutre}${gr}: $multisig1${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/madlist.txt
 fi
+
+fi
+
+
 
 
 #it s an escrow involving 2transactions which are going to the same multisig address so if multisig1(buyer tx to the multisig1)=multisig2(seller tx to the multisig2) in this txid multisig2 != multisig3, this line should optimize the script
@@ -399,8 +435,10 @@ fi
 currentblock=$(($currentblock + 1)) 
 done
 
-#create a reliability index to calculate the % of real sales among the real madescrows found
+#how much fake madescrows detected?
+echo -e "$isfake" >> ../CountMADescrow/MYGRAPHS/$date/fakelist.txt
 
+#create a reliability index to calculate the minimal % of real sales among the real madescrows found
 
 firstblock=$(cat -A ../CountMADescrow/MYGRAPHS/$date/madlist.txt | cut -c29- | rev | sed 's/.* //' | rev | sed -n "1p")
 lastblock=$(cat -A ../CountMADescrow/MYGRAPHS/$date/madlist.txt | cut -c29- | rev | sed 's/.* //' | rev | tac | sed -n "1p")
