@@ -1,7 +1,7 @@
 # CountMADescrow Roadmap 
 
 
-**FAKE DETECTION**
+**FAKES/TESTS DETECTION**
 
 - Improve the accuracy of the reliability index in using the 11 last madescrows created for the month of may and the ones created during the first of June.
 
