@@ -27,7 +27,7 @@
 
 - To get a more accurate result it s advised to multiply the final result (number of madescrow found) by the reliability index.
 
-- You can verify manually this index by checking on a block explorer for each madescrow found the block number of the madescrow creation and the block number of the madescrow release: if there are very few blocks between these transactions it s probably a fake/test madescrow.
+- You can verify manually if a madescrow is a real sale or a fake by checking on a block explorer for each madescrow found the block number of the madescrow creation and the block number of the madescrow release: if there are very few blocks between these transactions it s probably a fake/test madescrow: the lifetime of a madescrow is a data which will be included in the reliability index in a future version to make it more accurate.
 
 ![Screenshot](/IMG/reliability.png)
 
