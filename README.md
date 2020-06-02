@@ -55,6 +55,10 @@
 
  `bash howmuchmadescrowinthisblock.sh`
  
+ ## Check how this script is going to be improved
+ 
+  `cat ROADMAP.md`
+ 
  ## LINKS AND TUTORIALS
 
 `cat LINKS.md`
