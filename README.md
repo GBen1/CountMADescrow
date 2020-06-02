@@ -11,6 +11,8 @@
 
 >"If there are 2 blind transactions in the same txid which deposit the same Multisig address in using a script there is a MADescrow in this block"
 
+ - In a future version it will also verify that the coins which are sent to the madescrow have been anonymized in an anon->blind tx in their previous tx.
+
 ***
 
 **Make you own graph !**
