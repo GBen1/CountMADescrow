@@ -275,7 +275,7 @@ getblockmadtx1=$($curl_cmd https://explorer.particl.io/particl-insight-api/tx/$t
 getblockmadtx2=$($curl_cmd https://explorer.particl.io/particl-insight-api/tx/$tx2 2>/dev/null | jq -r .blockheight)
 
 
-difftx=$(printf '%.3f\n' "$(echo "$tx2" "-" "$tx1" | bc -l )")
+difftx=$(printf '%.3f\n' "$(echo "$getblockmadtx2" "-" "$getblockmadtx1" | bc -l )")
 difftx=$(echo "$diff" | cut -d "." -f 1 | cut -d "," -f 1)
 
 #patch
