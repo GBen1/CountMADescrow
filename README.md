@@ -29,7 +29,7 @@
 
 - You can verify manually if a madescrow is a real sale or a fake by checking on a block explorer for each madescrow found the block number of the madescrow creation and the block number of the madescrow release: if there are very few blocks between these transactions it s probably a fake/test madescrow.
 
- - The lifetime of a madescrow is a data which will be included in the reliability index in a future version to make it more accurate.
+ - The lifetime of a madescrow is a data which will be included in the reliability index in a future version to make it more accurate (in checking the global lifetime norm for the madescrows and in comparing it with the lifetime of the madescrows found).
 
 ![Screenshot](/IMG/reliability.png)
 
