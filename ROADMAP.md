@@ -14,5 +14,3 @@
 **GRAPHS**
 
 - Integrate gnuplot in the script and create graphs automatically
-
-***
