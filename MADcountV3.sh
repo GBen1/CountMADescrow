@@ -409,26 +409,32 @@ nblockscanned=$(printf '%.3f\n' "$(echo "$lastblock" "-" "$firstblock" "+" "1" |
 nblockscanned=$(echo "$nblockscanned" | cut -d "." -f 1 | cut -d "," -f 1)
 blockfound=$(cat ../CountMADescrow/MYGRAPHS/$date/madlist.txt 2>/dev/null | wc -l)
 
-if [[ "$nblockscanned" -gt "23000" ]] ; then 
+if [[ "$nblockscanned" -gt "34000" ]] ; then 
 clear
 echo -e "\e[1;36mRELIABILITY INDEX CALCULATION, PLEASE WAIT...\e[0;m"
 x=4
+y=700
+elif [[ "$nblockscanned" -gt "21000" ]] ; then 
+clear
+echo -e "\e[1;36mRELIABILITY INDEX CALCULATION, PLEASE WAIT...\e[0;m"
+x=3.5
+y=700
 elif [[ "$nblockscanned" -gt "13000" ]] ; then 
 clear
 echo -e "\e[1;36mRELIABILITY INDEX CALCULATION, PLEASE WAIT...\e[0;m"
 x=3
+y=350
 else
 clear
 echo -e "\e[1;36mEnter \"bash displaylaststats.sh\" to display the results of your last search\e[0;m"
 exit
 fi
 
-average=$(printf '%.3f\n' "$(echo "$blockfound" "*" "700" | bc -l )")
+average=$(printf '%.3f\n' "$(echo "$blockfound" "*" "$y" | bc -l )")
 average=$(printf '%.3f\n' "$(echo "$average" "/" "$nblockscanned" | bc -l )")
 average=$(printf '%.3f\n' "$(echo "$average" "*" "1000" | bc -l )")
 average=$(echo "$average" | cut -d "." -f 1 | cut -d "," -f 1)
 
-# mensual: 3 global: 4
 thaverage=$(printf '%.3f\n' "$(echo "$average" "*" "$x" | bc -l )")
 thaverage=$(echo "$thaverage" | cut -d "." -f 1 | cut -d "," -f 1)
 
@@ -450,7 +456,7 @@ z=0
 
 refblock1=$(cat -A ../CountMADescrow/MYGRAPHS/$date/madlist.txt | cut -c29-  |  rev | sed 's/.* //' | rev | sed -n "$line1 p")
 
-var=$(printf '%.3f\n' "$(echo "$refblock1" "+" "700" | bc -l )")
+var=$(printf '%.3f\n' "$(echo "$refblock1" "+" "$y" | bc -l )")
 var=$(echo "$var" | cut -d "." -f 1 | cut -d "," -f 1)
 
 while (( refblock2 < var)) &&  (( checkrefblock2  >  2))
