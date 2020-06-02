@@ -255,7 +255,7 @@ madtxid=$(echo "$madtxid" | cut -d "." -f 1 | cut -d "," -f 1)
 
 #LET S VERIFY IF THE REAL MADESCROW IS A FAKE SALE OR IF IT HAS BEEN RELEASED:
 getmadtx=$($curl_cmd https://explorer.particl.io/particl-insight-api/addr/$multisig1 2>/dev/null | jq -r .transactions)
-checkreleased=$($curl_cmd https://explorer.particl.io/particl-insight-api/addr/$multisig1 2>/dev/null | jq -r .transactions | wc -c)
+checkreleased=$(echo "$getmadtx" | wc -c)
 r=0
 if [[ "$checkreleased" -gt 100  ]] ; then
 r=1
