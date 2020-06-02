@@ -23,9 +23,7 @@
 
  - Due to the very low fees on this platform it could be enough cheap to make fakes/tests madescrows on the particl marketplace (in buying your own listing for example) which could impact negatively the reliability of this script. 
  
- - The reliability index is calculated by using an algorithm based on the deviation from the statistical norm to show you the probability for each real madescrow found to be a real sale.
-
-- To get a more accurate result it s advised to multiply the final result (number of madescrow found) by the reliability index.
+ - The reliability index is calculated by using an algorithm based on the deviation from the statistical norm to show you the MINIMAL probability for each real madescrow found to be a real sale.
 
 - You can verify manually if a madescrow is a real sale or a fake by checking on a block explorer for each madescrow found the block number of the madescrow creation and the block number of the madescrow release: if there are very few blocks between these transactions it s probably a fake/test madescrow.
 
