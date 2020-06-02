@@ -3,7 +3,7 @@
 
 **FAKES/TESTS DETECTION**
 
-- Improve the accuracy of the reliability index.
+- Improve the accuracy of the reliability index (which is not really accurate for short periods of time)
 
 - Integrate this tool in the script to release the features below: https://github.com/particl/particl-insight-api
 
