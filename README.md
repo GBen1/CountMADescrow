@@ -14,7 +14,7 @@
 
 **Timeline stats and number of MADescrow RELEASED !**
 
->After using this script for the first time ( `bash MADcountV3.sh`) you will be able to display the number of madescrow released and the timeline (weekly/monthly/quarterly/yearly) stats of your last search in using this command: `bash displaylaststats.sh`
+>After using this script for the first time ( `bash MADcountV3.sh`) you will be able to display three different indexes and the timeline stats (block based and time based) of your last search in using this command: `bash displaylaststats.sh`
 
 ***
 
@@ -35,7 +35,13 @@
 >If you let `bash MADcountV3.sh` running until the end of the script you will be able to see the fake index of your last search in entering `bash displaylaststats.sh`. 
 ***
 
-**Browse all the stats from august 2019 to the end of May 2020 without the need to run the script**
+**The Release Index: Among the madescrows created how much have been released ?**
+
+>At the end of the script you will be able to see the release index of your last search in entering `bash displaylaststats.sh`. 
+
+***
+
+**Browse all the stats from August 2019 to the end of May 2020 without the need to run the script**
 
 > [STATS: BLOCK 506469 -> BLOCK 703701](https://github.com/GBen1/CountMADescrow/tree/master/BENSTATS)
 
