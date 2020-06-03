@@ -37,7 +37,7 @@
 
 **Browse all the stats from august 2019 to the end of May 2020 without the need to run the script **
 
-> [STATS [BLOCK 506469;BLOCK 703701](https://github.com/GBen1/CountMADescrow/tree/master/BENSTATS)
+> [STATS: BLOCK 506469 -> BLOCK 703701](https://github.com/GBen1/CountMADescrow/tree/master/BENSTATS)
 
 ***
 
