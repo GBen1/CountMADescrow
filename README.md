@@ -28,7 +28,7 @@
 
 ***
 
-**The Fake Index: Among the madescrows found how much are fake/test/scripted sale ?**
+**The Fake Index: Among the madescrows found how much are fake/test/scripted ?**
 
 - The fake index show you the % of fake madescrows detected among the madescrows found during you last search.
 
