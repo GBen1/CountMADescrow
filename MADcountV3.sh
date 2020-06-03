@@ -105,6 +105,7 @@ cd particlcore
 curl_cmd="timeout 7 curl -4 -s -L -A i ../partyman/$PARTYMAN_VERSION"
 highestblock=$($curl_cmd https://explorer.particl.io/particl-insight-api/sync 2>/dev/null | jq -r .blockChainHeight)
 checksynced=$(./particl-cli getblockcount)
+highestblock=$(($highestblock - 1))
 if [[ "$checksynced" -lt "$highestblock" ]] ; then
 echo -e "${flred}ERROR: THE BLOCKCHAIN IS NOT FULLY SYNCHRONIZED: $checksynced < $highestblock ${neutre}" 
 echo -e "${flred}TRY AGAIN IN FEW MINUTES ${neutre}"
