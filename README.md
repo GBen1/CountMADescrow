@@ -46,6 +46,8 @@
 
 - The difference between the fake index and the reliability index represent the margin of error about fake sales considered as true or real sales considered as fake.
 
+> Margin of error = 100 - (reliability index + fake index)
+
 ***
 
 **Browse all the stats from August 2019 to the end of May 2020 without the need to run the script**
