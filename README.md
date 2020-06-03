@@ -68,10 +68,6 @@
   <img width="600" height="300" src="IMG/timebasedstats.png">
 </p>
  
- ## Check how this script is going to be improved
- 
-  `cat ROADMAP.md`
- 
  ## LINKS AND TUTORIALS
 
 `cat LINKS.md`
