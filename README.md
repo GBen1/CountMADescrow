@@ -3,7 +3,7 @@
 ![Screenshot](/IMG/MAD3.png)
 
 
-**MADcountV3.sh verify the following conditions to count a MADescrow:**
+**MADcountV4.sh verify the following conditions to count a MADescrow:**
 
 >"If there are 2 blind transactions in the same txid which deposit the same Multisig address in using a script there is a MADescrow in this block"
 
@@ -14,7 +14,7 @@
 
 **Timeline stats and number of MADescrow RELEASED !**
 
->After using this script for the first time ( `bash MADcountV3.sh`) you will be able to display three different indexes and the timeline stats (block based and time based) of your last search in using this command: `bash displaylaststats.sh`
+>After using this script for the first time ( `bash MADcountV4.sh`) you will be able to display three different indexes and the timeline stats (block based and time based) of your last search in using this command: `bash displaylaststats.sh`
 
 ***
 
@@ -24,7 +24,7 @@
  
  - The reliability index is calculated by using an algorithm based on the deviation from the statistical norm to show you the MINIMAL probability for each real madescrow found to be a real sale.
 
->If you let `bash MADcountV3.sh` running until the end of the script and if there are at least 13000 blocks between the first and the last madescrow found you will be able to see the reliability index of your last search in entering `bash displaylaststats.sh`. 
+>If you let `bash MADcountV4.sh` running until the end of the script and if there are at least 13000 blocks between the first and the last madescrow found you will be able to see the reliability index of your last search in entering `bash displaylaststats.sh`. 
 
 ***
 
@@ -32,7 +32,7 @@
 
 - The fake index show you the % of fake madescrows detected among the madescrows found during you last search.
 
->If you let `bash MADcountV3.sh` running until the end of the script you will be able to see the fake index of your last search in entering `bash displaylaststats.sh`. 
+>If you let `bash MADcountV4.sh` running until the end of the script you will be able to see the fake index of your last search in entering `bash displaylaststats.sh`. 
 ***
 
 **The Release Index: Among the madescrows created how much have been released ?**
@@ -53,7 +53,7 @@
 
 ## Start the counter from block X to the block Y  (506469 <= X < Y <= Highest Block)
 
-`bash MADcountV3.sh`
+`bash MADcountV4.sh`
 
 <p align="left">
   <img width="600" height="200" src="IMG/madcount.png">
