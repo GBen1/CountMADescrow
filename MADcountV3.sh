@@ -124,7 +124,7 @@ currentblock=0
 while ((currentblock < 506469)) || ((latestblock <= currentblock))
 do
 clear
-#It s not useful t start counting before the block 506469 for the reasons explained below
+#It s not useful to start counting before the block 506469 for the reasons explained below
 echo -e "${yel}The first Private MADescrow has been created during the block 506469 and we are at the block $latestblock ${neutre}"
 echo -e "${yel}From which block do you want to count the Private MADescrow creations ?${neutre}${gr} [506469;$latestblock[${neutre}" && read currentblock
 currentblock=$(echo $currentblock | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA-Z]| sed -n '/^[[:digit:]]*$/p' )
@@ -176,7 +176,7 @@ echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
 echo "read -p \"\$(echo -e \"\e[1;36mPress [Enter] key to continue...\e[0;m\")\"" >> ../CountMADescrow/displaylaststats.sh
 echo "clear" >> ../CountMADescrow/displaylaststats.sh
 echo "echo -e \"\e[1;44m\$numadlist MADESCROWS FOUND\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
-echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/released.txt ] && echo -e \"\e[1;42m\ $released MADESCROWS HAVE BEEN RELEASED\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
+echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/released.txt ] && echo -e \"\e[1;42m\$released MADESCROWS HAVE BEEN RELEASED\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
 echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/reliabilityindex.txt ] && echo -e \"\e[1;44m\$index\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/fakelist.txt ] && echo -e \"\e[1;41m\$fakelist FAKE MADESCROWS FOUND\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
