@@ -155,9 +155,9 @@ echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/madlist.txt ] && numadlist=\$(cat M
 echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/reliabilityindex.txt ] && index=\$(cat MYGRAPHS/$date/reliabilityindex.txt 2>/dev/null)" >> ../CountMADescrow/displaylaststats.sh
 echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/fakelist.txt ] && fakelist=\$(cat MYGRAPHS/$date/fakelist.txt 2>/dev/null)" >> ../CountMADescrow/displaylaststats.sh
 echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/released.txt ] && released=\$(cat MYGRAPHS/$date/released.txt 2>/dev/null)" >> ../CountMADescrow/displaylaststats.sh
-echo "[ $fakelist ] && F=$(printf '%.3f\n' "$(echo "$fakelist" "*" "100" | bc -l )")" >> ../CountMADescrow/displaylaststats.sh
-echo "[ $numadlist ] && [ $F ] && Z=$(printf '%.3f\n' "\$(echo "$F" "/" "$numadlist" | bc -l )")" >> ../CountMADescrow/displaylaststats.sh
-echo "[ $Z ] &&  fakeindex=$(echo "$Z" | cut -d "." -f 1 | cut -d "," -f 1)" >> ../CountMADescrow/displaylaststats.sh
+echo "[ \$fakelist ] && F=\$(printf '%.3f\n' "$(echo "$fakelist" "*" "100" | bc -l )")" >> ../CountMADescrow/displaylaststats.sh
+echo "[ \$numadlist ] && [ \$F ] && Z=\$(printf '%.3f\n' "\$(echo "$F" "/" "$numadlist" | bc -l )")" >> ../CountMADescrow/displaylaststats.sh
+echo "[ \$Z ] &&  fakeindex=\$(echo "$Z" | cut -d "." -f 1 | cut -d "," -f 1)" >> ../CountMADescrow/displaylaststats.sh
 echo "echo -e \"\e[1;44mTIME BASED STATS (Available from 08-11-19 (block 506469) to 06-01-20 (block 703701))\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
 echo "echo -e \"\e[1;31mGRAPH: EVERY MONTH (time based)\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
