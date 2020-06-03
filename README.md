@@ -17,7 +17,7 @@
 
 ***
 
-**The Reliability Index : What is the MINIMAL probability for a madescrow found to be a real sale on the marketplace (and not a fake/test) ?**
+**The Reliability Index : What is the MINIMAL probability for a real madescrow found to be a real sale on the marketplace (and not a fake/test) ?**
 
  - Due to the very low fees on this platform it could be enough cheap to make fakes/tests madescrows on the particl marketplace (in buying your own listing for example) which could impact negatively the reliability of this script. 
  
