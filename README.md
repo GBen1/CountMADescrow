@@ -1,4 +1,4 @@
-# MADESCROW Counter for the Particl Marketplace
+# MADescrow Counter for the Particl Marketplace
 
 ![Screenshot](MAD.png)
 
