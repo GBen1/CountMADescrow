@@ -155,6 +155,9 @@ echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/madlist.txt ] && numadlist=\$(cat M
 echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/reliabilityindex.txt ] && index=\$(cat MYGRAPHS/$date/reliabilityindex.txt 2>/dev/null)" >> ../CountMADescrow/displaylaststats.sh
 echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/fakelist.txt ] && fakelist=\$(cat MYGRAPHS/$date/fakelist.txt 2>/dev/null)" >> ../CountMADescrow/displaylaststats.sh
 echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/released.txt ] && released=\$(cat MYGRAPHS/$date/released.txt 2>/dev/null)" >> ../CountMADescrow/displaylaststats.sh
+echo "[ \$fakelist ] && F=\$(printf '%.3f\n' "\$(echo "\$fakelist" "*" "100" | bc -l )")" >> ../CountMADescrow/displaylaststats.sh
+echo "[ \$numadlist ] && [ \$F ] && Z=\$(printf '%.3f\n' "\$(echo "\$F" "/" "\$numadlist" | bc -l )")" >> ../CountMADescrow/displaylaststats.sh
+echo "[ \$Z ] &&  fakeindex=\$(echo "\$Z" | cut -d "." -f 1 | cut -d "," -f 1)" >> ../CountMADescrow/displaylaststats.sh
 echo "echo -e \"\e[1;44mTIME BASED STATS (Available from 08-11-19 (block 506469) to 06-01-20 (block 703701))\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
 echo "echo -e \"\e[1;31mGRAPH: EVERY MONTH (time based)\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
@@ -176,11 +179,11 @@ echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
 echo "read -p \"\$(echo -e \"\e[1;36mPress [Enter] key to continue...\e[0;m\")\"" >> ../CountMADescrow/displaylaststats.sh
 echo "clear" >> ../CountMADescrow/displaylaststats.sh
 echo "echo -e \"\e[1;44m\$numadlist MADESCROWS FOUND\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
+echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/fakelist.txt ] && echo -e \"\e[1;41m\$fakelist FAKE MADESCROWS FOUND\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/released.txt ] && echo -e \"\e[1;42m\$released MADESCROWS HAVE BEEN RELEASED\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
 echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/reliabilityindex.txt ] && echo -e \"\e[1;44m\$index\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
-echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/fakelist.txt ] && echo -e \"\e[1;41m\$fakelist FAKE MADESCROWS FOUND\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
-
+echo "[ \$fakeindex ] && echo -e \"\e[1;41mFAKE INDEX = \$fakeindex\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
 echo "cat MYGRAPHS/$date/madlist.txt 2>/dev/null" >> ../CountMADescrow/displaylaststats.sh
 
@@ -276,7 +279,7 @@ getblockmadtx1=$($curl_cmd https://explorer.particl.io/particl-insight-api/tx/$t
 
 
 difftx=$(printf '%.3f\n' "$(echo "$getblockmadtx1" "-" "$getblockmadtx2" | bc -l )")
-difftx=$(echo "$diff" | cut -d "." -f 1 | cut -d "," -f 1)
+difftx=$(echo "$difftx" | cut -d "." -f 1 | cut -d "," -f 1)
 
 #patch
 if [[ "$tx1" = "$tx2"  ]] ; then
