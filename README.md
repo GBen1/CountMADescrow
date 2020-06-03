@@ -28,11 +28,18 @@
 
 ***
 
-**The Fake Index: Among the madescrows found how much are fake/test/scripted ?**
+**The Fake Index: Among the real madescrows found how much are fake/test/scripted ?**
 
 - The fake index show you the % of fake madescrows detected among the madescrows found during you last search.
 
 >If you let `bash MADcountV4.sh` running until the end of the script you will be able to see the fake index of your last search in entering `bash displaylaststats.sh`. 
+
+***
+
+**The Margin of Error**
+
+- The difference between the fake index and the reliability index represent the margin of error about fake sales considered as true or real sales considered as fake.
+
 ***
 
 **The Release Index: Among the madescrows created how much have been released ?**
