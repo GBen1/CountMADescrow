@@ -156,6 +156,11 @@ echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/madlist.txt ] && numadlist=\$(cat M
 echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/reliabilityindex.txt ] && index=\$(cat MYGRAPHS/$date/reliabilityindex.txt 2>/dev/null)" >> ../CountMADescrow/displaylaststats.sh
 echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/fakelist.txt ] && fakelist=\$(cat MYGRAPHS/$date/fakelist.txt 2>/dev/null)" >> ../CountMADescrow/displaylaststats.sh
 echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/released.txt ] && released=\$(cat MYGRAPHS/$date/released.txt 2>/dev/null)" >> ../CountMADescrow/displaylaststats.sh
+
+echo "[ \$released ] && G=\$(printf '%.3f\n' \"\$(echo \"\$released\" \"*\" \"100\" | bc -l )\")" >> ../CountMADescrow/displaylaststats.sh
+echo "[ \$numadlist ] && [ \$G ] && H=\$(printf '%.3f\n' \"\$(echo \"\$G\" \"/\" \"\$numadlist\" | bc -l )\")" >> ../CountMADescrow/displaylaststats.sh
+echo "[ \$H ] &&  releaseindex=\$(echo \"\$H\" | cut -d \".\" -f 1 | cut -d \",\" -f 1)" >> ../CountMADescrow/displaylaststats.sh
+
 echo "[ \$fakelist ] && F=\$(printf '%.3f\n' \"\$(echo \"\$fakelist\" \"*\" \"100\" | bc -l )\")" >> ../CountMADescrow/displaylaststats.sh
 echo "[ \$numadlist ] && [ \$F ] && Z=\$(printf '%.3f\n' \"\$(echo \"\$F\" \"/\" \"\$numadlist\" | bc -l )\")" >> ../CountMADescrow/displaylaststats.sh
 echo "[ \$Z ] &&  fakeindex=\$(echo \"\$Z\" | cut -d \".\" -f 1 | cut -d \",\" -f 1)" >> ../CountMADescrow/displaylaststats.sh
@@ -185,6 +190,7 @@ echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/released.txt ] && echo -e \"\e[1;42
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
 echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/reliabilityindex.txt ] && echo -e \"\e[1;44m\$index\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "[ \$fakeindex ] && echo -e \"\e[1;41mFAKE INDEX = \$fakeindex %\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
+echo "[ \$releaseindex ] && echo -e \"\e[1;42mRELEASE INDEX = \$releaseindex %\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
 echo "cat MYGRAPHS/$date/madlist.txt 2>/dev/null" >> ../CountMADescrow/displaylaststats.sh
 
