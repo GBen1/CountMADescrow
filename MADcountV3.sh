@@ -261,7 +261,7 @@ if [[ "$multisig1" = "$multisig2"  ]] ; then
 madtxid=$(printf '%.3f\n' "$(echo "$madtxid" "+" "1" | bc -l )")
 madtxid=$(echo "$madtxid" | cut -d "." -f 1 | cut -d "," -f 1)
 
-#LET S VERIFY IF THE REAL MADESCROW IS A FAKE SALE OR IF IT HAS BEEN RELEASED:
+#LET S VERIFY IF THE REAL MADESCROW IS A FAKE SALE AND/OR IF IT HAS BEEN RELEASED:
 getmadtx=$($curl_cmd https://explorer.particl.io/particl-insight-api/addr/$multisig1 2>/dev/null | jq -r .transactions)
 checkreleased=$(echo "$getmadtx" | wc -c)
 r=0
