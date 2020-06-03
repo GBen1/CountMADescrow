@@ -1,4 +1,4 @@
-# CountMADescrow : Mutual Assured Destruction ESCROW Counter for the Particl Marketplace
+# Mutual Assured Destruction ESCROW Counter for the Particl Marketplace
 
 ![Screenshot](MAD.png)
 
