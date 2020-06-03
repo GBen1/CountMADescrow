@@ -183,7 +183,7 @@ echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/fakelist.txt ] && echo -e \"\e[1;41
 echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/released.txt ] && echo -e \"\e[1;42m\$released MADESCROWS HAVE BEEN RELEASED\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
 echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/reliabilityindex.txt ] && echo -e \"\e[1;44m\$index\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
-echo "[ \$fakeindex ] && echo -e \"\e[1;41mFAKE INDEX = \$fakeindex\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
+echo "[ \$fakeindex ] && echo -e \"\e[1;41mFAKE INDEX = \$fakeindex %\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
 echo "cat MYGRAPHS/$date/madlist.txt 2>/dev/null" >> ../CountMADescrow/displaylaststats.sh
 
