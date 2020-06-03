@@ -38,7 +38,7 @@
 
 - The fake index show you the % of fake madescrows detected among the madescrows found during you last search.
 
-- If the number of block between the madescrow creation and the madescrow release is under than 30blocks the madescrow is considered as fake (will be adjusted in a future version with an index based on the statistical norm for the Madescrow lifetimes in the considered period) as it s really unlikely that a buyer you could receive his purchase and  release the Madescrow less than 1hour after the seller accepted it(create the smartcontract).
+- If the number of block between the madescrow creation and the madescrow release is under than 30blocks the madescrow is considered as fake (will be adjusted in a future version with an index based on the statistical norm for the Madescrow lifetimes in the considered period) as it s really unlikely that a buyer could receive his purchase and release the Madescrow less than 1 hour after the seller accepted it(create the smartcontract).
 
 - The goal of these indexes is not to be 100% accurate but to give us the most important % of good metrics to analyse the evolution of this project
 
