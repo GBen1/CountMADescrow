@@ -13,9 +13,9 @@
 
 ***
 
-**Make you own graph !**
+**Timeline stats and number of madescrow released !**
 
->After using this script for the first time ( `bash MADcountV3.sh`) you will be able to display the timeline (weekly/monthly/quarterly/yearly) stats of your last search in using this command: `bash displaylaststats.sh`
+>After using this script for the first time ( `bash MADcountV3.sh`) you will be able to display the number of madescrow released and the timeline (weekly/monthly/quarterly/yearly) stats of your last search in using this command: `bash displaylaststats.sh`
 
 ***
 
@@ -25,13 +25,15 @@
  
  - The reliability index is calculated by using an algorithm based on the deviation from the statistical norm to show you the MINIMAL probability for each real madescrow found to be a real sale.
 
-- You can verify manually if a madescrow is a real sale or a fake by checking on a block explorer for each madescrow found the block number of the madescrow creation and the block number of the madescrow release: if there are very few blocks between these transactions it s probably a fake/test madescrow.
-
-![Screenshot](/IMG/reliability.png)
-
 >If you let `bash MADcountV3.sh` running until the end of the script and if there are at least 13000 blocks between the first and the last madescrow found you will be able to see the reliability index of your last search in entering `bash displaylaststats.sh`. 
 
 ***
+
+**The Fake Index: Among the madescrows found how much are fake/test/scripted sale ?**
+
+- The fake index show you the % of fake madescrows among the madescrows found during you last search.
+
+>If you let `bash MADcountV3.sh` running until the end of the script you will be able to see the fake index of your last search in entering `bash displaylaststats.sh`. 
 
 ## Download
 
