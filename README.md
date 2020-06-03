@@ -1,4 +1,4 @@
-# MADescrow Counter for the Particl Marketplace
+# MUTUAL ASSURED DESTRUCTION COUNTER
 
 ![Screenshot](MAD.png)
 
