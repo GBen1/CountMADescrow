@@ -65,7 +65,7 @@
 `bash displaylaststats.sh`
 
 <p align="left">
-  <img width="600" height="300" src="IMG/timebasedstats.png">
+  <img width="600" height="300" src="IMG/Timeline.png">
 </p>
  
  ## LINKS AND TUTORIALS
