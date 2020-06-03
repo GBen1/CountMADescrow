@@ -156,11 +156,9 @@ echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/madlist.txt ] && numadlist=\$(cat M
 echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/reliabilityindex.txt ] && index=\$(cat MYGRAPHS/$date/reliabilityindex.txt 2>/dev/null)" >> ../CountMADescrow/displaylaststats.sh
 echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/fakelist.txt ] && fakelist=\$(cat MYGRAPHS/$date/fakelist.txt 2>/dev/null)" >> ../CountMADescrow/displaylaststats.sh
 echo "[ -f  ../CountMADescrow/MYGRAPHS/$date/released.txt ] && released=\$(cat MYGRAPHS/$date/released.txt 2>/dev/null)" >> ../CountMADescrow/displaylaststats.sh
-
 echo "[ \$released ] && G=\$(printf '%.3f\n' \"\$(echo \"\$released\" \"*\" \"100\" | bc -l )\")" >> ../CountMADescrow/displaylaststats.sh
 echo "[ \$numadlist ] && [ \$G ] && H=\$(printf '%.3f\n' \"\$(echo \"\$G\" \"/\" \"\$numadlist\" | bc -l )\")" >> ../CountMADescrow/displaylaststats.sh
 echo "[ \$H ] &&  releaseindex=\$(echo \"\$H\" | cut -d \".\" -f 1 | cut -d \",\" -f 1)" >> ../CountMADescrow/displaylaststats.sh
-
 echo "[ \$fakelist ] && F=\$(printf '%.3f\n' \"\$(echo \"\$fakelist\" \"*\" \"100\" | bc -l )\")" >> ../CountMADescrow/displaylaststats.sh
 echo "[ \$numadlist ] && [ \$F ] && Z=\$(printf '%.3f\n' \"\$(echo \"\$F\" \"/\" \"\$numadlist\" | bc -l )\")" >> ../CountMADescrow/displaylaststats.sh
 echo "[ \$Z ] &&  fakeindex=\$(echo \"\$Z\" | cut -d \".\" -f 1 | cut -d \",\" -f 1)" >> ../CountMADescrow/displaylaststats.sh
