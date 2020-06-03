@@ -293,6 +293,7 @@ if [[ "$r" -eq 0 ]] ; then
   madlist=$(($madlist + 1)) 
   else
   echo -e "${gr}BLOCK ${neutre}${yel}$currentblock ${neutre}${gr}: $multisig1${neutre} ${red}(FAKE)${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/madlist.txt
+  isfake=$(($isfake + 1))
   fi
 
  else
@@ -301,9 +302,9 @@ if [[ "$r" -eq 0 ]] ; then
   mkdir ../CountMADescrow/MYGRAPHS/$date 2>/dev/null
   echo -e "${gr}BLOCK ${neutre}${yel}$currentblock ${neutre}${gr}: $multisig1${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/madlist.txt
   madlist=$(($madlist + 1)) 
-  else
+    else
   echo -e "${gr}BLOCK ${neutre}${yel}$currentblock ${neutre}${gr}: $multisig1${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/madlist.txt
-  fi
+    fi
  fi
 
 else
@@ -316,6 +317,7 @@ else
   madlist=$(($madlist + 1)) 
   else
   echo -e "${gr}BLOCK ${neutre}${yel}$currentblock ${neutre}${gr}: $multisig1${neutre} ${red}(FAKE) ${neutre}${bl}(RELEASED)${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/madlist.txt
+  isfake=$(($isfake + 1))
   fi
 
  else
