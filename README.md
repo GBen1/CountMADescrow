@@ -1,6 +1,6 @@
 # MUTUAL ASSURED DESTRUCTION ESCROW COUNTER FOR THE PARTICL MARKETPLACE
 
-![Screenshot](MAD3.png)
+![Screenshot](/IMG/MAD3.png)
 
 
 **MADcountV3.sh verify the following conditions to count a MADescrow:**
@@ -9,7 +9,7 @@
 
 ***
 
-![Screenshot](indexes.png)
+![Screenshot](/IMG/indexes.png)
 
 **Timeline stats and number of MADescrow RELEASED !**
 
