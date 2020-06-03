@@ -42,13 +42,18 @@
 
 `bash MADcountV3.sh`
 
-![Screenshot](/IMG/madcount.png)
+<p align="center">
+  <img width="600" height="200" src="IMG/madcount.png">
+</p>
+
 
 ## Display the timeline stats of your last search 
 
 `bash displaylaststats.sh`
 
-![Screenshot](/IMG/timebasedstats.png)
+<p align="center">
+  <img width="750" height="450" src="IMG/timebasedstats.png">
+</p>
  
  ## Check how this script is going to be improved
  
