@@ -29,7 +29,7 @@
 
 **The Fake Index: Among the madescrows found how much are fake/test/scripted sale ?**
 
-- The fake index show you the % of fake madescrows among the madescrows found during you last search.
+- The fake index show you the % of fake madescrows detected among the madescrows found during you last search.
 
 >If you let `bash MADcountV3.sh` running until the end of the script you will be able to see the fake index of your last search in entering `bash displaylaststats.sh`. 
 ***
