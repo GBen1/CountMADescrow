@@ -262,20 +262,20 @@ r=1
 released=$(($released + 1))
 fi
 
-#get madescrow creation tx
-tx1=$(echo $getmadtx | sed 's/ //' | sed 's/ //' | sed 's/ //' | sed 's/"//' | sed 's/"//' | sed 's/"//' | sed 's/"//' | cut -c2- | rev | cut -c2- | rev | sed 's/.*,//')
+#get madescrow creation
+tx2=$(echo $getmadtx | sed 's/ //' | sed 's/ //' | sed 's/ //' | sed 's/"//' | sed 's/"//' | sed 's/"//' | sed 's/"//' | cut -c2- | rev | cut -c2- | rev | sed 's/.*,//')
 #get madescrow release tx
-tx2=$(echo $getmadtx | sed 's/ //' | sed 's/ //' | sed 's/ //' | sed 's/"//' | sed 's/"//' | sed 's/"//' | sed 's/"//' | cut -c2- | rev | cut -c2- | sed 's/.*,//' | rev)
+tx1=$(echo $getmadtx | sed 's/ //' | sed 's/ //' | sed 's/ //' | sed 's/"//' | sed 's/"//' | sed 's/"//' | sed 's/"//' | cut -c2- | rev | cut -c2- | sed 's/.*,//' | rev)
 
 
 
 #get blockheight of madescrow creation
-getblockmadtx1=$($curl_cmd https://explorer.particl.io/particl-insight-api/tx/$tx1 2>/dev/null | jq -r .blockheight)
-#get blockheight of madescrow release
 getblockmadtx2=$($curl_cmd https://explorer.particl.io/particl-insight-api/tx/$tx2 2>/dev/null | jq -r .blockheight)
+#get blockheight of madescrow release
+getblockmadtx1=$($curl_cmd https://explorer.particl.io/particl-insight-api/tx/$tx1 2>/dev/null | jq -r .blockheight)
 
 
-difftx=$(printf '%.3f\n' "$(echo "$getblockmadtx2" "-" "$getblockmadtx1" | bc -l )")
+difftx=$(printf '%.3f\n' "$(echo "$getblockmadtx1" "-" "$getblockmadtx2" | bc -l )")
 difftx=$(echo "$diff" | cut -d "." -f 1 | cut -d "," -f 1)
 
 #patch
