@@ -13,7 +13,7 @@
 
 ***
 
-**Timeline stats and number of madescrow released !**
+**Timeline stats and number of MADescrow RELEASED !**
 
 >After using this script for the first time ( `bash MADcountV3.sh`) you will be able to display the number of madescrow released and the timeline (weekly/monthly/quarterly/yearly) stats of your last search in using this command: `bash displaylaststats.sh`
 
