@@ -162,7 +162,7 @@ echo "[ \$H ] &&  releaseindex=\$(echo \"\$H\" | cut -d \".\" -f 1 | cut -d \",\
 echo "[ \$fakelist ] && F=\$(printf '%.3f\n' \"\$(echo \"\$fakelist\" \"*\" \"100\" | bc -l )\")" >> ../CountMADescrow/displaylaststats.sh
 echo "[ \$numadlist ] && [ \$F ] && Z=\$(printf '%.3f\n' \"\$(echo \"\$F\" \"/\" \"\$numadlist\" | bc -l )\")" >> ../CountMADescrow/displaylaststats.sh
 echo "[ \$Z ] &&  fakeindex=\$(echo \"\$Z\" | cut -d \".\" -f 1 | cut -d \",\" -f 1)" >> ../CountMADescrow/displaylaststats.sh
-echo "echo -e \"\e[1;44mTIME BASED STATS (Available from 08-11-19 (block 506469) to 06-01-20 (block 703701))\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
+echo "echo -e \"\e[1;44mTIME BASED STATS (Available from 08-11-19 (block 506469) to 06-01-20 (block 703701)\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
 echo "echo -e \"\e[1;31mEVERY MONTH (TIME BASED)\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
