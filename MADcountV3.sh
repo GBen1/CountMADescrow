@@ -166,7 +166,7 @@ echo "[ \$numadlist ] && [ \$F ] && Z=\$(printf '%.3f\n' \"\$(echo \"\$F\" \"/\"
 echo "[ \$Z ] &&  fakeindex=\$(echo \"\$Z\" | cut -d \".\" -f 1 | cut -d \",\" -f 1)" >> ../CountMADescrow/displaylaststats.sh
 echo "echo -e \"\e[1;44mTIME BASED STATS (Available from 08-11-19 (block 506469) to 06-01-20 (block 703701))\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
-echo "echo -e \"\e[1;31mEVERY MONTH (TIME BASED)\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
+echo "echo -e \"\e[1;31mMONTH (TIME BASED)\e[0;m\"" >> ../CountMADescrow/displaylaststats.sh
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
 echo "cat MYGRAPHS/$date/timebasedgraph.txt 2>/dev/null" >> ../CountMADescrow/displaylaststats.sh
 echo "echo \"\" " >> ../CountMADescrow/displaylaststats.sh
@@ -382,7 +382,7 @@ if [[ "$currentblock" -eq "$weeklygraph" ]] ; then
 if [[ "$currentblock" -eq "$beginning" ]] ; then
 mkdir ../CountMADescrow/MYGRAPHS 2>/dev/null
 mkdir ../CountMADescrow/MYGRAPHS/$date 2>/dev/null
-echo -e "${red}GRAPH: EVERY WEEK (5089 blocks) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/weeklygraph.txt
+echo -e "${red}EVERY WEEK (5089 blocks) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/weeklygraph.txt
 echo ""   >> ../CountMADescrow/MYGRAPHS/$date/weeklygraph.txt
 weeklygraph=$(($weeklygraph + 5089)) 
 else
@@ -398,7 +398,7 @@ if [[ "$currentblock" -eq "$monthlygraph" ]] ; then
 if [[ "$currentblock" -eq "$beginning" ]] ; then
 mkdir ../CountMADescrow/MYGRAPHS 2>/dev/null
 mkdir ../CountMADescrow/MYGRAPHS/$date 2>/dev/null
-echo -e "${red}GRAPH: EVERY MONTH (20354 blocks) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/monthlygraph.txt
+echo -e "${red}EVERY MONTH (20354 blocks) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/monthlygraph.txt
 echo ""   >> ../CountMADescrow/MYGRAPHS/$date/monthlygraph.txt
 monthlygraph=$(($monthlygraph + 20354)) 
 else
@@ -414,7 +414,7 @@ if [[ "$currentblock" -eq "$quartergraph" ]] ; then
 if [[ "$currentblock" -eq "$beginning" ]] ; then
 mkdir ../CountMADescrow/MYGRAPHS 2>/dev/null
 mkdir ../CountMADescrow/MYGRAPHS/$date 2>/dev/null
-echo -e "${red}GRAPH: EVERY QUARTER (61063 blocks) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/quartergraph.txt
+echo -e "${red}EVERY QUARTER (61063 blocks) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/quartergraph.txt
 echo ""   >> ../CountMADescrow/MYGRAPHS/$date/quartergraph.txt
 quartergraph=$(($quartergraph + 61063)) 
 else
@@ -433,7 +433,7 @@ mkdir ../CountMADescrow/MYGRAPHS 2>/dev/null
 mkdir ../CountMADescrow/MYGRAPHS/$date 2>/dev/null
 echo -e "${flblue}BLOCK BASED STATS${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
 echo "" >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
-echo -e "${red}GRAPH: EVERY YEAR (244253 blocks) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
+echo -e "${red}EVERY YEAR (244253 blocks) ${neutre}" >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
 echo ""   >> ../CountMADescrow/MYGRAPHS/$date/yeargraph.txt
 yeargraph=$(($yeargraphh + 244253)) 
 else
