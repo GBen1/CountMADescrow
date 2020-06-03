@@ -52,7 +52,7 @@
 `bash displaylaststats.sh`
 
 <p align="left">
-  <img width="750" height="450" src="IMG/timebasedstats.png">
+  <img width="600" height="300" src="IMG/timebasedstats.png">
 </p>
  
  ## Check how this script is going to be improved
