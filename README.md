@@ -42,7 +42,7 @@
 
 `bash MADcountV3.sh`
 
-<p align="center">
+<p align="left">
   <img width="600" height="200" src="IMG/madcount.png">
 </p>
 
@@ -51,7 +51,7 @@
 
 `bash displaylaststats.sh`
 
-<p align="center">
+<p align="left">
   <img width="750" height="450" src="IMG/timebasedstats.png">
 </p>
  
