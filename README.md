@@ -48,10 +48,6 @@
 `bash displaylaststats.sh`
 
 ![Screenshot](/IMG/timebasedstats.png)
-
-## Check the MADescrows in a specific block
-
- `bash howmuchmadescrowinthisblock.sh`
  
  ## Check how this script is going to be improved
  
