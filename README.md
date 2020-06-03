@@ -9,7 +9,7 @@
 
 ***
 
-![Screenshot](/IMG/indexes.png)
+![Screenshot](/IMG/index.png)
 
 **Timeline stats and number of MADescrow RELEASED !**
 
