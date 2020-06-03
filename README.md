@@ -66,7 +66,7 @@
 
 ## Start the counter from block X to the block Y  (506469 <= X < Y <= Highest Block)
 
-`bash MADcountV4.sh`
+`cd CountMADescrow && bash MADcountV4.sh`
 
 <p align="left">
   <img width="600" height="200" src="IMG/madcount.png">
