@@ -294,12 +294,23 @@ tx1=$(echo $getmadtx | sed 's/ //' | sed 's/ //' | sed 's/ //' | sed 's/"//' | s
 checktx1=$(echo "$tx1" | wc -c)
 done
 
-
+checkgetblockmadtx2=0
+#we need to be sure insight is answering
+while ((checkgetblockmadtx2 < 2))
+do
 #get blockheight of madescrow creation
 getblockmadtx2=$($curl_cmd https://explorer.particl.io/particl-insight-api/tx/$tx2 2>/dev/null | jq -r .blockheight)
+checkgetblockmadtx2=$(echo "$getblockmadtx2" | wc -c)
+done
+
+checkgetblockmadtx1=0
+#we need to be sure insight is answering
+while ((checkgetblockmadtx1 < 2))
+do
 #get blockheight of madescrow release
 getblockmadtx1=$($curl_cmd https://explorer.particl.io/particl-insight-api/tx/$tx1 2>/dev/null | jq -r .blockheight)
-
+checkgetblockmadtx1=$(echo "$getblockmadtx1" | wc -c)
+done
 
 difftx=$(printf '%.3f\n' "$(echo "$getblockmadtx1" "-" "$getblockmadtx2" | bc -l )")
 difftx=$(echo "$difftx" | cut -d "." -f 1 | cut -d "," -f 1)
