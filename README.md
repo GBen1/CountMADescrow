@@ -8,8 +8,12 @@
 >"If there are 2 blind transactions in the same txid which deposit the same Multisig address in using a script there is a MADescrow in this block"
 
 ***
+
 <p align="left">
   <img width="600" height="300" src="IMG/index1.png">
+</p>
+<p align="left">
+  <img width="600" height="150" src="screen.png">
 </p>
 
 **Timeline stats and number of MADescrow RELEASED !**
