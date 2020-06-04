@@ -10,7 +10,7 @@
 ***
 
 <p align="center">
-  <img width="400" height="200" src="IMG/index1.png">
+  <img width="400" height="200" src="IMG/index2.png">
 </p>
 <p align="center">
   <img width="800" height="200" src="IMG/screen.png">
