@@ -9,11 +9,11 @@
 
 ***
 
-<p align="left">
-  <img width="600" height="300" src="IMG/index1.png">
+<p align="center">
+  <img width="400" height="200" src="IMG/index1.png">
 </p>
-<p align="left">
-  <img width="600" height="150" src="IMG/screen.png">
+<p align="center">
+  <img width="800" height="200" src="IMG/screen.png">
 </p>
 
 **Timeline stats and number of MADescrow RELEASED !**
@@ -82,7 +82,7 @@
 `bash displaylaststats.sh`
 
 <p align="left">
-  <img width="600" height="300" src="IMG/Timeline.png">
+  <img width="600" height="400" src="IMG/Timeline.png">
 </p>
  
  ## LINKS AND TUTORIALS
