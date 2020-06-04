@@ -13,7 +13,7 @@
   <img width="400" height="200" src="IMG/index5.png">
 </p>
 <p align="center">
-  <img width="800" height="200" src="IMG/screen.png">
+  <img width="800" height="200" src="IMG/screen2.png">
 </p>
 
 **Timeline stats and number of MADescrow RELEASED !**
