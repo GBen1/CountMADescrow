@@ -262,19 +262,37 @@ madtxid=$(printf '%.3f\n' "$(echo "$madtxid" "+" "1" | bc -l )")
 madtxid=$(echo "$madtxid" | cut -d "." -f 1 | cut -d "," -f 1)
 
 #LET S VERIFY IF THE REAL MADESCROW IS A POTENTIAL FAKE SALE AND/OR IF IT HAS BEEN RELEASED:
+checkreleased=0
+#we need to be sure insight is answering
+while ((checkreleased < 2))
+do
 getmadtx=$($curl_cmd https://explorer.particl.io/particl-insight-api/addr/$multisig1 2>/dev/null | jq -r .transactions)
 checkreleased=$(echo "$getmadtx" | wc -c)
+done
+
 r=0
 if [[ "$checkreleased" -gt 100  ]] ; then
 r=1
 released=$(($released + 1))
 fi
 
+checktx2=0
+#we need to be sure insight is answering
+while ((checktx2 < 2))
+do
 #get madescrow creation
 tx2=$(echo $getmadtx | sed 's/ //' | sed 's/ //' | sed 's/ //' | sed 's/"//' | sed 's/"//' | sed 's/"//' | sed 's/"//' | cut -c2- | rev | cut -c2- | rev | sed 's/.*,//')
+checktx2=$(echo "$tx2" | wc -c)
+done
+
+checktx1=0
+#we need to be sure insight is answering
+while ((checktx1 < 2))
+do
 #get madescrow release tx
 tx1=$(echo $getmadtx | sed 's/ //' | sed 's/ //' | sed 's/ //' | sed 's/"//' | sed 's/"//' | sed 's/"//' | sed 's/"//' | cut -c2- | rev | cut -c2- | sed 's/.*,//' | rev)
-
+checktx1=$(echo "$tx1" | wc -c)
+done
 
 
 #get blockheight of madescrow creation
