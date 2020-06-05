@@ -135,7 +135,7 @@ beginning=$(echo $currentblock | cut -d "." -f 1 | cut -d "," -f 1 | tr -d [a-zA
 done
 
 latestblock=0
-while ((latestblock <= currentblock))
+while ((latestblock <= currentblock)) || ((latestblock > highestblock ))
 do
 clear
 #It s not useful t start counting before the block 506469 for the reasons explained below
