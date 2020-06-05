@@ -9,6 +9,8 @@ bl='\e[1;36m'
 flred='\e[1;41m'
 flblue='\e[1;44m'
 
+git pull
+
 cd
 
 clear
