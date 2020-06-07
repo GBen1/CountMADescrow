@@ -34,6 +34,7 @@
 
 - [Particl Explained — Private Transactions](https://particl.news/particl-explained-private-transactions-44cb120d9cd)
 - [RingCT & Bulletproofs Now Available on Mainnet](https://particl.news/ringct-bulletproofs-now-available-on-mainnet-b97a06a56fa9)
+- [SMSG NETWORK](https://particl.wiki/learn/market/smsg)
 
 
 ## EXCHANGES
